@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://lxhq3h6livim"]
+
+[ext_resource type="Texture2D" uid="uid://dpyasddnihplv" path="res://robot/RobotModel_TreadGears.png" id="1_acx7d"]
+
+[resource]
+resource_name = "TreadGear"
+cull_mode = 2
+shading_mode = 2
+albedo_texture = ExtResource("1_acx7d")
+texture_filter = 2

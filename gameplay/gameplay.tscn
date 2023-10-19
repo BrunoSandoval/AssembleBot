@@ -1,0 +1,380 @@
+[gd_scene load_steps=16 format=3 uid="uid://df45ndsctidqu"]
+
+[ext_resource type="Script" path="res://legacy/old_main.gd" id="1_4j0sw"]
+[ext_resource type="PackedScene" uid="uid://dpa4t0rj1qhrx" path="res://robot/RobotModel.blend" id="1_fg1qv"]
+[ext_resource type="PackedScene" uid="uid://cybt47ccqb63u" path="res://game_map/game_map.tscn" id="2_0rr3i"]
+[ext_resource type="Script" path="res://legacy/old_robot.gd" id="2_v3pdo"]
+[ext_resource type="Script" path="res://legacy/old_camera.gd" id="4_5ecoh"]
+[ext_resource type="Script" path="res://legacy/old_gui.gd" id="5_uu8tf"]
+[ext_resource type="ButtonGroup" uid="uid://d3yfh6q3lw6sx" path="res://gameplay/cam_button_group.tres" id="7_mlo4m"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_27sea"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_imdmj"]
+sky_material = SubResource("ProceduralSkyMaterial_27sea")
+
+[sub_resource type="Environment" id="Environment_odbej"]
+background_mode = 2
+sky = SubResource("Sky_imdmj")
+ssao_enabled = true
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6my6l"]
+height = 1.0
+radius = 0.25
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qc2ko"]
+radius = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_cgfw5"]
+radius = 0.2
+
+[sub_resource type="SystemFont" id="SystemFont_kodgb"]
+font_names = PackedStringArray("Consolas", "Monospace")
+
+[sub_resource type="CodeHighlighter" id="CodeHighlighter_wj31c"]
+number_color = Color(0.643137, 1, 0.898039, 1)
+symbol_color = Color(0.698039, 0.819608, 1, 1)
+
+[node name="Gameplay" type="Node3D"]
+script = ExtResource("1_4j0sw")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.250002, 0.433016, 0, 0.866025, 0.5, -0.500003, 0.433012, -0.749998, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_odbej")
+
+[node name="Robot" type="CharacterBody3D" parent="."]
+floor_stop_on_slope = false
+script = ExtResource("2_v3pdo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Robot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_6my6l")
+
+[node name="Eyes" type="Area3D" parent="Robot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, -1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Robot/Eyes"]
+shape = SubResource("SphereShape3D_qc2ko")
+
+[node name="EyesBack" type="Area3D" parent="Robot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Robot/EyesBack"]
+shape = SubResource("SphereShape3D_cgfw5")
+
+[node name="RobotModel" parent="Robot" instance=ExtResource("1_fg1qv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="GameMap" parent="." instance=ExtResource("2_0rr3i")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+script = ExtResource("4_5ecoh")
+
+[node name="GUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_uu8tf")
+
+[node name="Run" type="Button" parent="GUI"]
+layout_mode = 0
+anchor_left = 0.6
+anchor_top = 0.02
+anchor_right = 0.72
+anchor_bottom = 0.08
+text = "Run"
+
+[node name="Step" type="Button" parent="GUI"]
+layout_mode = 0
+anchor_left = 0.74
+anchor_top = 0.02
+anchor_right = 0.86
+anchor_bottom = 0.08
+text = "Step"
+
+[node name="Reset" type="Button" parent="GUI"]
+layout_mode = 0
+anchor_left = 0.88
+anchor_top = 0.02
+anchor_right = 0.98
+anchor_bottom = 0.08
+text = "Reset"
+
+[node name="Program" type="CodeEdit" parent="GUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6
+anchor_top = 0.1
+anchor_right = 0.97
+anchor_bottom = 0.95
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_fonts/font = SubResource("SystemFont_kodgb")
+theme_override_font_sizes/font_size = 18
+highlight_current_line = true
+draw_tabs = true
+draw_spaces = true
+syntax_highlighter = SubResource("CodeHighlighter_wj31c")
+gutters_draw_executing_lines = true
+gutters_draw_line_numbers = true
+gutters_zero_pad_line_numbers = true
+indent_size = 2
+
+[node name="ErrorRect" type="ColorRect" parent="GUI"]
+visible = false
+layout_mode = 0
+anchor_left = 0.02
+anchor_top = 0.9
+anchor_right = 0.58
+anchor_bottom = 0.96
+color = Color(0.831373, 0.0784314, 0.0823529, 1)
+
+[node name="ErrorLabel" type="Label" parent="GUI/ErrorRect"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "No Errors Yet"
+
+[node name="CamMenu" type="Button" parent="GUI"]
+layout_mode = 0
+anchor_left = 0.46
+anchor_top = 0.02
+anchor_right = 0.58
+anchor_bottom = 0.08
+toggle_mode = true
+text = "Camera3D"
+
+[node name="Options" type="VBoxContainer" parent="GUI/CamMenu"]
+visible = false
+layout_mode = 0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 2.0
+
+[node name="FixedCam" type="CheckBox" parent="GUI/CamMenu/Options"]
+layout_mode = 2
+button_pressed = true
+button_group = ExtResource("7_mlo4m")
+text = "Map Center"
+
+[node name="TopDown" type="CheckBox" parent="GUI/CamMenu/Options"]
+layout_mode = 2
+button_group = ExtResource("7_mlo4m")
+text = "Top Down"
+
+[node name="TopDownRotate" type="CheckBox" parent="GUI/CamMenu/Options"]
+layout_mode = 2
+button_group = ExtResource("7_mlo4m")
+text = "Top Rotating"
+
+[node name="FirstPerson" type="CheckBox" parent="GUI/CamMenu/Options"]
+layout_mode = 2
+button_group = ExtResource("7_mlo4m")
+text = "First Person"
+
+[node name="ThirdPerson" type="CheckBox" parent="GUI/CamMenu/Options"]
+layout_mode = 2
+button_group = ExtResource("7_mlo4m")
+text = "Third Person"
+
+[node name="ShoulderSurfR" type="CheckBox" parent="GUI/CamMenu/Options"]
+layout_mode = 2
+button_group = ExtResource("7_mlo4m")
+text = "Right Shoulder"
+
+[node name="ShoulderSurfL" type="CheckBox" parent="GUI/CamMenu/Options"]
+layout_mode = 2
+button_group = ExtResource("7_mlo4m")
+text = "Left Shoulder"
+
+[node name="RegisterScroll" type="ScrollContainer" parent="GUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.1
+anchor_bottom = 1.0
+offset_right = 8.0
+grow_vertical = 2
+
+[node name="Registers" type="VBoxContainer" parent="GUI/RegisterScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="ContainerReg0" type="VBoxContainer" parent="GUI/RegisterScroll/Registers"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/RegisterScroll/Registers/ContainerReg0"]
+layout_mode = 2
+text = "reg0"
+
+[node name="Value" type="LineEdit" parent="GUI/RegisterScroll/Registers/ContainerReg0"]
+layout_mode = 2
+text = "0"
+editable = false
+
+[node name="BinValue" type="LineEdit" parent="GUI/RegisterScroll/Registers/ContainerReg0"]
+layout_mode = 2
+text = "00000000"
+editable = false
+
+[node name="ContainerReg1" type="VBoxContainer" parent="GUI/RegisterScroll/Registers"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/RegisterScroll/Registers/ContainerReg1"]
+layout_mode = 2
+text = "reg1"
+
+[node name="Value" type="LineEdit" parent="GUI/RegisterScroll/Registers/ContainerReg1"]
+layout_mode = 2
+text = "0"
+editable = false
+
+[node name="BinValue" type="LineEdit" parent="GUI/RegisterScroll/Registers/ContainerReg1"]
+layout_mode = 2
+text = "00000000"
+editable = false
+
+[node name="ContainerReg2" type="VBoxContainer" parent="GUI/RegisterScroll/Registers"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/RegisterScroll/Registers/ContainerReg2"]
+layout_mode = 2
+text = "reg2"
+
+[node name="Value" type="LineEdit" parent="GUI/RegisterScroll/Registers/ContainerReg2"]
+layout_mode = 2
+text = "0"
+editable = false
+
+[node name="BinValue" type="LineEdit" parent="GUI/RegisterScroll/Registers/ContainerReg2"]
+layout_mode = 2
+text = "00000000"
+editable = false
+
+[node name="ContainerReg3" type="VBoxContainer" parent="GUI/RegisterScroll/Registers"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/RegisterScroll/Registers/ContainerReg3"]
+layout_mode = 2
+text = "reg3"
+
+[node name="Value" type="LineEdit" parent="GUI/RegisterScroll/Registers/ContainerReg3"]
+layout_mode = 2
+text = "0"
+editable = false
+
+[node name="BinValue" type="LineEdit" parent="GUI/RegisterScroll/Registers/ContainerReg3"]
+layout_mode = 2
+text = "00000000"
+editable = false
+
+[node name="ContainerReg4" type="VBoxContainer" parent="GUI/RegisterScroll/Registers"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/RegisterScroll/Registers/ContainerReg4"]
+layout_mode = 2
+text = "reg4"
+
+[node name="Value" type="LineEdit" parent="GUI/RegisterScroll/Registers/ContainerReg4"]
+layout_mode = 2
+text = "0"
+editable = false
+
+[node name="BinValue" type="LineEdit" parent="GUI/RegisterScroll/Registers/ContainerReg4"]
+layout_mode = 2
+text = "00000000"
+editable = false
+
+[node name="ContainerReg5" type="VBoxContainer" parent="GUI/RegisterScroll/Registers"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/RegisterScroll/Registers/ContainerReg5"]
+layout_mode = 2
+text = "reg5"
+
+[node name="Value" type="LineEdit" parent="GUI/RegisterScroll/Registers/ContainerReg5"]
+layout_mode = 2
+text = "0"
+editable = false
+
+[node name="BinValue" type="LineEdit" parent="GUI/RegisterScroll/Registers/ContainerReg5"]
+layout_mode = 2
+text = "00000000"
+editable = false
+
+[node name="ContainerRegBot" type="VBoxContainer" parent="GUI/RegisterScroll/Registers"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/RegisterScroll/Registers/ContainerRegBot"]
+layout_mode = 2
+text = "rob"
+
+[node name="Value" type="LineEdit" parent="GUI/RegisterScroll/Registers/ContainerRegBot"]
+layout_mode = 2
+text = "0"
+editable = false
+
+[node name="BinValue" type="LineEdit" parent="GUI/RegisterScroll/Registers/ContainerRegBot"]
+layout_mode = 2
+text = "00000000"
+editable = false
+
+[node name="ContainerRegBotEyes" type="VBoxContainer" parent="GUI/RegisterScroll/Registers"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/RegisterScroll/Registers/ContainerRegBotEyes"]
+layout_mode = 2
+text = "eye"
+
+[node name="Value" type="LineEdit" parent="GUI/RegisterScroll/Registers/ContainerRegBotEyes"]
+layout_mode = 2
+text = "0"
+editable = false
+
+[node name="BinValue" type="LineEdit" parent="GUI/RegisterScroll/Registers/ContainerRegBotEyes"]
+layout_mode = 2
+text = "none"
+editable = false
+
+[node name="SpeedBox" type="SpinBox" parent="GUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.12
+anchor_right = 0.2
+anchor_bottom = 0.06
+min_value = 0.1
+max_value = 6.0
+step = 0.1
+value = 1.0
+
+[node name="BackButton" type="Button" parent="GUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.12
+anchor_top = 0.92
+anchor_right = 0.2
+anchor_bottom = 0.98
+text = "Back"
+
+[connection signal="robotFinished" from="Robot" to="." method="_on_Robot_robotFinished"]
+[connection signal="pressed" from="GUI/Run" to="." method="_on_Run_pressed"]
+[connection signal="pressed" from="GUI/Step" to="." method="_on_Step_pressed"]
+[connection signal="pressed" from="GUI/Reset" to="." method="_on_Reset_pressed"]
+[connection signal="toggled" from="GUI/CamMenu" to="GUI" method="_on_CamMenu_toggled"]
+[connection signal="pressed" from="GUI/CamMenu/Options/FixedCam" to="Camera3D" method="_on_FixedCam_pressed"]
+[connection signal="pressed" from="GUI/CamMenu/Options/TopDown" to="Camera3D" method="_on_TopDown_pressed"]
+[connection signal="pressed" from="GUI/CamMenu/Options/TopDownRotate" to="Camera3D" method="_on_TopDownRotate_pressed"]
+[connection signal="pressed" from="GUI/CamMenu/Options/FirstPerson" to="Camera3D" method="_on_FirstPerson_pressed"]
+[connection signal="pressed" from="GUI/CamMenu/Options/ThirdPerson" to="Camera3D" method="_on_ThirdPerson_pressed"]
+[connection signal="pressed" from="GUI/CamMenu/Options/ShoulderSurfR" to="Camera3D" method="_on_ShoulderSurfR_pressed"]
+[connection signal="pressed" from="GUI/CamMenu/Options/ShoulderSurfL" to="Camera3D" method="_on_ShoulderSurfL_pressed"]
+[connection signal="value_changed" from="GUI/SpeedBox" to="Robot" method="set_speed"]
+[connection signal="pressed" from="GUI/BackButton" to="GUI" method="_on_back_button_pressed"]

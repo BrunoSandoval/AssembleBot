@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://cybt47ccqb63u"]
+
+[ext_resource type="Script" path="res://legacy/old_game_map.gd" id="2_bmtoc"]
+[ext_resource type="MeshLibrary" uid="uid://b0a2ywkevbv3u" path="res://game_map/basic_tilles.meshlib" id="2_n0u0m"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6eiwt"]
+
+[node name="GameMap" type="GridMap"]
+mesh_library = ExtResource("2_n0u0m")
+physics_material = SubResource("PhysicsMaterial_6eiwt")
+cell_size = Vector3(1, 1, 1)
+cell_center_x = false
+cell_center_z = false
+script = ExtResource("2_bmtoc")

@@ -1,0 +1,39 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="AssembleBot"
+run/main_scene="res://main_menu/main_menu.tscn"
+config/features=PackedStringArray("4.1", "Forward Plus")
+config/icon="res://cursor.png"
+
+[autoload]
+
+GameMaster="*res://game_master.gd"
+
+[display]
+
+window/size/viewport_width=960
+window/size/viewport_height=540
+window/stretch/mode="canvas_items"
+mouse_cursor/custom_image="res://cursor.png"
+
+[layer_names]
+
+3d_physics/layer_1="Player"
+3d_physics/layer_2="World"
+3d_physics/layer_3="Interactables"
+3d_physics/layer_4="Hazards"
+3d_physics/layer_5="Effectors"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
