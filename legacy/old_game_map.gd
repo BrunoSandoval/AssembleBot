@@ -69,9 +69,9 @@ func buildGrid(tiles:Array, offsetx:int = 0, offsety:int = 0, height:int=0):
 				elif cell is Array:
 					if cell.size() > 0:
 						if cell.size() > 1:
-							self.set_cell_item(Vector3(x, height, y), int(cell[0]), get_orthogonal_index_from_basis(Basis(Vector3.UP, PI*0.5*cell[1])))
+							self.set_cell_item(Vector3(x, height, y), cell[0] as int, get_orthogonal_index_from_basis(Basis(Vector3.UP, PI*0.5*cell[1])))
 						else:
-							self.set_cell_item(Vector3(x, height, y), int(cell[0]))
+							self.set_cell_item(Vector3(x, height, y), cell[0] as int)
 				x += 1
 		elif line is int or line is float:
 			self.set_cell_item(Vector3(x, height, y), int(line))

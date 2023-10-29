@@ -1,0 +1,122 @@
+[gd_scene load_steps=3 format=3 uid="uid://1d45wccrvb8f"]
+
+[ext_resource type="Script" path="res://main_menu/pick_map_screen.gd" id="1_axaju"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_rdp71"]
+
+[node name="PickMapScreen" type="Node"]
+script = ExtResource("1_axaju")
+
+[node name="MapPicker" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MapsPanel" type="PanelContainer" parent="MapPicker"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.1
+anchor_right = 0.69
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Scroll" type="ScrollContainer" parent="MapPicker/MapsPanel"]
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="MapPicker/MapsPanel/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DefaultMapButton" type="CheckButton" parent="MapPicker/MapsPanel/Scroll/VBox"]
+layout_mode = 2
+button_pressed = true
+button_group = SubResource("ButtonGroup_rdp71")
+text = "Playground (Bulitin)"
+
+[node name="BackButton" type="Button" parent="MapPicker"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.82
+anchor_right = 0.55
+anchor_bottom = 0.9
+text = "Done"
+
+[node name="ReloadButton" type="Button" parent="MapPicker"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.56
+anchor_top = 0.82
+anchor_right = 0.69
+anchor_bottom = 0.9
+text = "Reload"
+
+[node name="URLInput" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DialogPanel" type="Panel" parent="URLInput"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.3
+anchor_right = 0.8
+anchor_bottom = 0.6
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="URLInput/DialogPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Enter URL:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="URLInput/DialogPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.4
+anchor_right = 0.9
+anchor_bottom = 0.69
+placeholder_text = "https://brunosandoval.github.io/AssembleBot/"
+
+[node name="OkButton" type="Button" parent="URLInput"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.63
+anchor_right = 0.55
+anchor_bottom = 0.73
+text = "Ok"
+
+[node name="CancelButton" type="Button" parent="URLInput"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.56
+anchor_top = 0.63
+anchor_right = 0.8
+anchor_bottom = 0.73
+text = "Cancel"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[connection signal="pressed" from="MapPicker/BackButton" to="." method="go_back"]
+[connection signal="pressed" from="MapPicker/ReloadButton" to="." method="search_levels"]
+[connection signal="pressed" from="URLInput/OkButton" to="." method="_on_url_ok_button_pressed"]
+[connection signal="pressed" from="URLInput/CancelButton" to="." method="_on_url_cancel_button_pressed"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]

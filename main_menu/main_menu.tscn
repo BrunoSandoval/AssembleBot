@@ -1,8 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://b7f3nskil4824"]
+[gd_scene load_steps=37 format=3 uid="uid://b7f3nskil4824"]
 
 [ext_resource type="Script" path="res://main_menu/main_menu.gd" id="1_w3ns7"]
 [ext_resource type="PackedScene" uid="uid://dpa4t0rj1qhrx" path="res://robot/RobotModel.blend" id="1_x67i2"]
-[ext_resource type="MeshLibrary" uid="uid://b0a2ywkevbv3u" path="res://game_map/basic_tilles.meshlib" id="2_a6k82"]
+[ext_resource type="MeshLibrary" uid="uid://b0a2ywkevbv3u" path="res://game_map/tiles/basic/basic_tilles.meshlib" id="3_vsay1"]
 [ext_resource type="Texture2D" uid="uid://ccojqa645pm22" path="res://main_menu/ExitBlock.png" id="3_xyqmc"]
 [ext_resource type="Texture2D" uid="uid://og6tb1kaq83p" path="res://main_menu/SelectMapBlock.png" id="4_cuksd"]
 [ext_resource type="Texture2D" uid="uid://hdaxgqb7e0nv" path="res://main_menu/ExitBlockEmissive.png" id="5_c1la5"]
@@ -26,14 +26,31 @@ ssao_enabled = true
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pg18g"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_digtq"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ibfnb"]
 albedo_texture = ExtResource("3_xyqmc")
 emission_texture = ExtResource("5_c1la5")
 uv1_scale = Vector3(3, 2, 2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_xtcnd"]
 lightmap_size_hint = Vector2i(10, 13)
-material = SubResource("StandardMaterial3D_digtq")
+material = SubResource("StandardMaterial3D_ibfnb")
+size = Vector3(1, 0.25, 0.25)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4ifkl"]
+load_path = "res://.godot/imported/ExitBlock.png-40179efc1c3e51e1feb1933f0c7bb485.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_r1qae"]
+load_path = "res://.godot/imported/ExitBlockEmissive.png-f658da3e5ac1ffe156b4110cfdfd13a6.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x02ue"]
+albedo_texture = SubResource("CompressedTexture2D_4ifkl")
+emission_enabled = true
+emission_texture = SubResource("CompressedTexture2D_r1qae")
+uv1_scale = Vector3(3, 2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6ihwm"]
+lightmap_size_hint = Vector2i(10, 13)
+material = SubResource("StandardMaterial3D_x02ue")
 size = Vector3(1, 0.25, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u0x36"]
@@ -49,6 +66,23 @@ lightmap_size_hint = Vector2i(10, 13)
 material = SubResource("StandardMaterial3D_dt5en")
 size = Vector3(1, 0.25, 0.25)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vlj8n"]
+load_path = "res://.godot/imported/SelectMapBlock.png-6778a1d8459b1b68d47e02da657fe0d1.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i0egm"]
+load_path = "res://.godot/imported/SelectMapBlockEmissive.png-02916893bc4149ac85b94efd0903d646.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4fj5k"]
+albedo_texture = SubResource("CompressedTexture2D_vlj8n")
+emission_enabled = true
+emission_texture = SubResource("CompressedTexture2D_i0egm")
+uv1_scale = Vector3(3, 2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1prpg"]
+lightmap_size_hint = Vector2i(10, 13)
+material = SubResource("StandardMaterial3D_4fj5k")
+size = Vector3(1, 0.25, 0.25)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qmcpp"]
 albedo_texture = ExtResource("5_sutp7")
 emission_texture = ExtResource("9_5yy8c")
@@ -57,6 +91,23 @@ uv1_scale = Vector3(3, 2, 2)
 [sub_resource type="BoxMesh" id="BoxMesh_4d65c"]
 lightmap_size_hint = Vector2i(10, 13)
 material = SubResource("StandardMaterial3D_qmcpp")
+size = Vector3(1, 0.25, 0.25)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5ceqg"]
+load_path = "res://.godot/imported/PlayBlock.png-5ffc370642c1cf9fbbd69ebc1473e6cf.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2xn5q"]
+load_path = "res://.godot/imported/PlayBlockEmissive.png-865d16aad41225604dee70025bab377b.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kxxqi"]
+albedo_texture = SubResource("CompressedTexture2D_5ceqg")
+emission_enabled = true
+emission_texture = SubResource("CompressedTexture2D_2xn5q")
+uv1_scale = Vector3(3, 2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hwr6g"]
+lightmap_size_hint = Vector2i(10, 13)
+material = SubResource("StandardMaterial3D_kxxqi")
 size = Vector3(1, 0.25, 0.25)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0t5wf"]
@@ -84,20 +135,25 @@ transform = Transform3D(-4.35451e-08, -0.0871558, 0.996195, -3.8097e-09, 0.99619
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 1.9, 0, -0.8)
 
 [node name="GridMap" type="GridMap" parent="."]
-mesh_library = ExtResource("2_a6k82")
+mesh_library = ExtResource("3_vsay1")
 physics_material = SubResource("PhysicsMaterial_pg18g")
 cell_size = Vector3(1, 1, 1)
 cell_center_x = false
 cell_center_z = false
 data = {
-"cells": PackedInt32Array(65532, 1, 1, 65532, 3, 1, 65532, 0, 1, 65532, 65535, 1, 65532, 65534, 1, 65532, 65533, 1, 65532, 2, 1, 65532, 4, 1, 65532, 65532, 1, 65532, 65531, 1, 65532, 5, 1, 65532, 65529, 1, 65532, 65530, 1, 65532, 6, 1, 65532, 65528, 1, 65532, 7, 1, 65532, 8, 1, 65532, 65527, 1, 65533, 7, 0, 65533, 6, 0, 65533, 5, 0, 65533, 4, 0, 65533, 3, 0, 65533, 2, 0, 65533, 1, 0, 65533, 0, 0, 65533, 65535, 0, 65533, 65534, 0, 65533, 65533, 0, 65533, 65532, 0, 65533, 65531, 0, 65533, 65530, 0, 65533, 65529, 0, 65533, 65528, 0, 65534, 65530, 0, 65534, 65531, 0, 65534, 65532, 0, 65534, 65533, 0, 65534, 5, 0, 65534, 4, 0, 65534, 3, 0, 65534, 2, 0, 65534, 1, 0, 65534, 0, 0, 65534, 65535, 0, 65534, 65534, 0, 65534, 6, 0, 65534, 65529, 0, 65535, 65531, 0, 65535, 65532, 0, 65535, 65533, 0, 65535, 65534, 0, 65535, 65535, 0, 65535, 0, 0, 65535, 1, 0, 65535, 2, 0, 65535, 3, 0, 65535, 4, 0, 65535, 5, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 1, 65534, 0, 1, 65535, 0, 1, 0, 0, 1, 1, 0, 0, 4, 0, 1, 2, 0, 2, 0, 0, 2, 65535, 0, 2, 1, 0, 2, 65534, 0, 2, 2, 0, 1, 3, 0, 1, 65533, 0, 0, 65532, 0, 65535, 65530, 0, 0, 65531, 0, 65533, 65527, 0, 0, 5, 0, 65535, 6, 0, 65534, 7, 0, 65533, 8, 0, 65532, 9, 1, 65533, 9, 0)
+"cells": PackedInt32Array(65532, 1, 1, 65532, 3, 1, 65532, 0, 1, 65532, 65535, 1, 65532, 65534, 1, 65532, 65533, 1, 65532, 2, 1, 65532, 4, 1, 65532, 65532, 1, 65532, 65531, 1, 65532, 5, 1, 65532, 65529, 1, 65532, 65530, 1, 65532, 6, 1, 65532, 65528, 1, 65532, 7, 1, 65532, 8, 1, 65532, 65527, 1, 65533, 7, 0, 65533, 6, 0, 65533, 5, 0, 65533, 4, 0, 65533, 3, 0, 65533, 2, 0, 65533, 1, 0, 65533, 0, 0, 65533, 65535, 0, 65533, 65534, 0, 65533, 65533, 0, 65533, 65532, 0, 65533, 65531, 0, 65533, 65530, 0, 65533, 65529, 0, 65533, 65528, 0, 65534, 65530, 0, 65534, 65531, 0, 65534, 65532, 0, 65534, 65533, 0, 65534, 5, 0, 65534, 4, 0, 65534, 3, 0, 65534, 2, 0, 65534, 1, 0, 65534, 0, 0, 65534, 65535, 0, 65534, 65534, 0, 65534, 6, 0, 65534, 65529, 0, 65535, 65531, 0, 65535, 65532, 0, 65535, 65533, 0, 65535, 65534, 0, 65535, 65535, 0, 65535, 0, 0, 65535, 1, 0, 65535, 2, 0, 65535, 3, 0, 65535, 4, 0, 65535, 5, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 1, 65534, 0, 1, 65535, 0, 1, 0, 0, 1, 1, 0, 0, 4, 0, 1, 2, 0, 2, 0, 0, 2, 65535, 0, 2, 1, 0, 2, 65534, 0, 2, 2, 0, 1, 3, 0, 1, 65533, 0, 0, 65532, 0, 65535, 65530, 0, 0, 65531, 0, 65533, 65527, 0, 0, 5, 0, 65535, 6, 0, 65534, 7, 0, 65533, 8, 0, 65532, 9, 1, 65533, 9, 0, 65533, 65526, 0, 65534, 65526, 0, 65535, 65526, 0, 0, 65526, 0, 65533, 10, 0, 65534, 10, 0, 65535, 10, 0, 0, 10, 0, 1, 10, 0, 2, 10, 0, 3, 10, 0, 4, 10, 0, 5, 10, 0, 6, 10, 0, 7, 10, 0, 8, 10, 0, 9, 10, 0, 10, 10, 0, 1, 65526, 0, 2, 65526, 0, 3, 65526, 0, 4, 65526, 0, 5, 65526, 0, 6, 65526, 0, 7, 65526, 0, 8, 65526, 0, 9, 65526, 0, 10, 65526, 0, 10, 9, 0, 10, 8, 0, 10, 7, 0, 10, 6, 0, 10, 5, 0, 10, 4, 0, 10, 3, 0, 10, 2, 0, 10, 1, 0, 10, 0, 0, 10, 65535, 0, 10, 65534, 0, 10, 65533, 0, 10, 65532, 0, 10, 65531, 0, 10, 65530, 0, 10, 65529, 0, 10, 65528, 0, 10, 65527, 0, 65534, 65527, 0, 65535, 65527, 0, 0, 65527, 0, 1, 65527, 0, 2, 65527, 0, 3, 65527, 0, 4, 65527, 0, 5, 65527, 0, 6, 65527, 0, 7, 65527, 0, 8, 65527, 0, 9, 65527, 0, 9, 65528, 0, 9, 65529, 0, 9, 65530, 0, 9, 65531, 0, 9, 65532, 0, 9, 65533, 0, 9, 65534, 0, 9, 65535, 0, 9, 0, 0, 9, 1, 0, 9, 2, 0, 9, 3, 0, 8, 3, 0, 8, 4, 0, 8, 5, 0, 8, 6, 0, 8, 7, 0, 8, 8, 0, 9, 8, 0, 9, 9, 0, 9, 7, 0, 9, 6, 0, 9, 5, 0, 9, 4, 0, 7, 7, 0, 7, 8, 0, 6, 8, 0, 7, 9, 0, 6, 9, 0, 8, 9, 0, 5, 9, 0, 5, 8, 0, 4, 8, 0, 3, 8, 0, 2, 8, 0, 2, 9, 0, 1, 9, 0, 0, 9, 0, 65535, 9, 0, 65534, 9, 0, 3, 9, 0, 4, 9, 0, 1, 8, 0, 0, 8, 0, 65535, 8, 0, 65534, 8, 0, 65535, 7, 0, 0, 6, 0, 1, 6, 0, 2, 6, 0, 3, 6, 0, 4, 6, 0, 4, 7, 0, 3, 7, 0, 2, 7, 0, 1, 7, 0, 0, 7, 0, 5, 7, 0, 5, 6, 0, 6, 6, 0, 7, 6, 0, 6, 7, 0, 1, 5, 0, 1, 4, 0, 2, 4, 0, 2, 3, 0, 3, 3, 0, 4, 3, 0, 4, 4, 0, 4, 5, 0, 3, 5, 0, 2, 5, 0, 3, 4, 0, 5, 3, 0, 5, 4, 0, 5, 5, 0, 6, 5, 0, 7, 4, 0, 7, 3, 0, 7, 2, 0, 7, 1, 0, 8, 2, 0, 8, 1, 0, 7, 5, 0, 6, 4, 0, 6, 2, 0, 6, 1, 0, 6, 0, 0, 7, 0, 0, 7, 65535, 0, 7, 65534, 0, 8, 65534, 0, 8, 65533, 0, 8, 65532, 0, 8, 65531, 0, 8, 65530, 0, 8, 65529, 0, 7, 65528, 0, 6, 65528, 0, 5, 65528, 0, 4, 65528, 0, 3, 65528, 0, 65534, 65528, 0, 65535, 65529, 0, 0, 65529, 0, 1, 65529, 0, 1, 65528, 0, 2, 65528, 0, 0, 65528, 0, 65535, 65528, 0, 0, 65530, 0, 1, 65530, 0, 1, 65531, 0, 1, 65532, 0, 2, 65532, 0, 2, 65531, 0, 2, 65530, 0, 2, 65529, 0, 2, 65533, 0, 3, 0, 0, 3, 1, 0, 3, 2, 0, 3, 65535, 0, 3, 65534, 0, 3, 65533, 0, 3, 65532, 0, 3, 65531, 0, 3, 65530, 0, 3, 65529, 0, 5, 65529, 0, 5, 65530, 0, 4, 65530, 0, 4, 65531, 0, 4, 65532, 0, 5, 65533, 0, 5, 65534, 0, 5, 65535, 0, 5, 0, 0, 5, 1, 0, 5, 2, 0, 4, 1, 0, 4, 0, 0, 4, 65535, 0, 4, 65534, 0, 4, 65533, 0, 4, 2, 0, 6, 3, 0, 8, 65535, 0, 7, 65530, 0, 7, 65529, 0, 8, 65528, 0, 4, 65529, 0, 6, 65530, 0, 6, 65531, 0, 6, 65529, 0, 5, 65531, 0, 5, 65532, 0, 6, 65533, 0, 6, 65534, 0, 6, 65535, 0, 6, 65532, 0, 7, 65531, 0, 7, 65532, 0, 7, 65533, 0, 8, 0, 0, 65532, 65526, 1, 65532, 65525, 1, 65533, 65525, 1, 65534, 65525, 1, 65535, 65525, 1, 0, 65525, 1, 1, 65525, 1, 2, 65525, 1, 3, 65525, 1, 4, 65525, 1, 5, 65525, 1, 6, 65525, 1, 7, 65525, 1, 8, 65525, 1, 9, 65525, 1, 10, 65525, 1, 11, 65525, 1, 65532, 10, 1, 65532, 11, 1, 65533, 11, 1, 65534, 11, 1, 65535, 11, 1, 0, 11, 1, 1, 11, 1, 2, 11, 1, 3, 11, 1, 4, 11, 1, 5, 11, 1, 6, 11, 1, 7, 11, 1, 8, 11, 1, 9, 11, 1, 10, 11, 1, 11, 11, 1, 11, 10, 1, 11, 9, 1, 11, 8, 1, 11, 7, 1, 11, 6, 1, 11, 5, 1, 11, 4, 1, 11, 3, 1, 11, 2, 1, 11, 1, 1, 11, 0, 1, 11, 65535, 1, 11, 65534, 1, 11, 65533, 1, 11, 65532, 1, 11, 65531, 1, 11, 65530, 1, 11, 65529, 1, 11, 65528, 1, 11, 65527, 1, 11, 65526, 1)
 }
 
 [node name="ExitBlock" type="StaticBody3D" parent="."]
 transform = Transform3D(0.5, 0, -0.866026, 0, 1, 0, 0.866026, 0, 0.5, 2, 0.125, 0.4)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ExitBlock"]
+[node name="BaseBlock" type="MeshInstance3D" parent="ExitBlock"]
 mesh = SubResource("BoxMesh_xtcnd")
+
+[node name="HighlightBlock" type="MeshInstance3D" parent="ExitBlock"]
+transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 0, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_6ihwm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ExitBlock"]
 shape = SubResource("BoxShape3D_u0x36")
@@ -105,8 +161,13 @@ shape = SubResource("BoxShape3D_u0x36")
 [node name="SelectMapBlock" type="StaticBody3D" parent="."]
 transform = Transform3D(-2.98023e-08, 0, -1, 0, 1, 0, 1, 0, -2.98023e-08, 2, 0.375, 0.5)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SelectMapBlock"]
+[node name="BaseBlock" type="MeshInstance3D" parent="SelectMapBlock"]
 mesh = SubResource("BoxMesh_r15pi")
+
+[node name="HighlightBlock" type="MeshInstance3D" parent="SelectMapBlock"]
+transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 0, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_1prpg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SelectMapBlock"]
 shape = SubResource("BoxShape3D_u0x36")
@@ -114,8 +175,13 @@ shape = SubResource("BoxShape3D_u0x36")
 [node name="StartBlock" type="StaticBody3D" parent="."]
 transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 2, 0.625, 0.5)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StartBlock"]
+[node name="BaseBlock" type="MeshInstance3D" parent="StartBlock"]
 mesh = SubResource("BoxMesh_4d65c")
+
+[node name="HighlightBlock" type="MeshInstance3D" parent="StartBlock"]
+transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 0, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_hwr6g")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StartBlock"]
 shape = SubResource("BoxShape3D_u0x36")
@@ -142,14 +208,14 @@ transform = Transform3D(-0.17101, 0.173648, 0.969846, 0.0301537, 0.984808, -0.17
 mesh = SubResource("TextMesh_j1mmv")
 
 [connection signal="input_event" from="ExitBlock" to="." method="_on_exit_block_input_event"]
-[connection signal="mouse_entered" from="ExitBlock" to="." method="_on_exit_block_mouse_entered"]
-[connection signal="mouse_exited" from="ExitBlock" to="." method="_on_exit_block_mouse_exited"]
+[connection signal="mouse_entered" from="ExitBlock" to="." method="_on_block_mouse_entered" binds= ["ExitBlock/HighlightBlock"]]
+[connection signal="mouse_exited" from="ExitBlock" to="." method="_on_block_mouse_exited" binds= ["ExitBlock/HighlightBlock"]]
 [connection signal="input_event" from="SelectMapBlock" to="." method="_on_select_map_block_input_event"]
-[connection signal="mouse_entered" from="SelectMapBlock" to="." method="_on_select_map_block_mouse_entered"]
-[connection signal="mouse_exited" from="SelectMapBlock" to="." method="_on_select_map_block_mouse_exited"]
+[connection signal="mouse_entered" from="SelectMapBlock" to="." method="_on_block_mouse_entered" binds= ["SelectMapBlock/HighlightBlock"]]
+[connection signal="mouse_exited" from="SelectMapBlock" to="." method="_on_block_mouse_exited" binds= ["SelectMapBlock/HighlightBlock"]]
 [connection signal="input_event" from="StartBlock" to="." method="_on_start_block_input_event"]
-[connection signal="mouse_entered" from="StartBlock" to="." method="_on_start_block_mouse_entered"]
-[connection signal="mouse_exited" from="StartBlock" to="." method="_on_start_block_mouse_exited"]
+[connection signal="mouse_entered" from="StartBlock" to="." method="_on_block_mouse_entered" binds= ["StartBlock/HighlightBlock", true]]
+[connection signal="mouse_exited" from="StartBlock" to="." method="_on_block_mouse_exited" binds= ["StartBlock/HighlightBlock"]]
 [connection signal="RequestError" from="PickMapScreen" to="." method="_on_pick_map_screen_request_error"]
 [connection signal="closed" from="PickMapScreen" to="." method="_on_pick_map_screen_closed"]
 [connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]

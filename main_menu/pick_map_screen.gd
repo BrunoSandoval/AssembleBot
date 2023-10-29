@@ -14,10 +14,6 @@ var levelList:Array[String] = []
 	$MapPicker/MapsPanel/Scroll/VBox/DefaultMapButton.button_group
 var levelButtons = []
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
-
 # a function to tell anyone who asks if we have anything on display
 func is_visible():
 	return $MapPicker.visible or $URLInput.visible
@@ -103,7 +99,7 @@ func update_level_list_local(levelsDir:DirAccess):
 		if file.ends_with(".json"):
 				levelList.append(file)
 	for folder in levelsDir.get_directories():
-		var folderOpener = levelsDir.open(levelsDir.get_current_dir()+"/"+folder)
+		var folderOpener = DirAccess.open(levelsDir.get_current_dir()+"/"+folder)
 		# if a folder fails to open, we ignore it
 		if folderOpener == null:
 			continue
@@ -123,7 +119,7 @@ func update_level_list_html(url:String = ""):
 		+ "/levels_manifest.json"
 	)
 
-func _on_http_request_request_completed(result, response_code, headers, body):
+func _on_http_request_request_completed(result, response_code, _headers, body):
 	# we reenable the button we disabled in update_level_list_html
 	$URLInput/OkButton.disabled = false
 	# we hide the input field, its job is done for now

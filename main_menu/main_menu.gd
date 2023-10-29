@@ -23,7 +23,6 @@ func _ready():
 	$RobotModel/AnimationPlayer.connect("animation_finished", Callable(self, "reset_idle_timer"))
 	# put the robot into the rest pose and kickstart the idle timer
 	$RobotModel/AnimationPlayer.play("ForceReset")
-	
 
 # a function connected to the idle timer timeout signal, to play the idle
 func play_random_idle():
@@ -52,37 +51,20 @@ func _on_exit_block_input_event(_camera, event, _position, _normal, _shape_idx):
 				get_tree().quit(0)
 
 # when the mouse enters any block, highlight and play a sound
-func _on_start_block_mouse_entered():
-	if $PickMapScreen.is_visible() || $ParseErrorMessage.visible || mapData == null:
+func _on_block_mouse_entered(block:String, checkMap:bool = false):
+	if $PickMapScreen.is_visible() || $ParseErrorMessage.visible || (checkMap and mapData == null):
 		return
-	# the highlighting is done with a texture on the emissive layer on the block
-	$StartBlock/MeshInstance3D.get_active_material(0).emission_enabled = true
-	# a little sound, to play when hovering over the block
-	$Bloop.play()
-func _on_select_map_block_mouse_entered():
-	if $PickMapScreen.is_visible() || $ParseErrorMessage.visible:
-		return
-	$SelectMapBlock/MeshInstance3D.get_active_material(0).emission_enabled = true
-	$Bloop.play()
-func _on_exit_block_mouse_entered():
-	if $PickMapScreen.is_visible() || $ParseErrorMessage.visible:
-		return
-	$ExitBlock/MeshInstance3D.get_active_material(0).emission_enabled = true
+	get_node(block).visible = true
 	$Bloop.play()
 
-# unhighlight when mouse exits the respective block
-func _on_start_block_mouse_exited():
-	$StartBlock/MeshInstance3D.get_active_material(0).emission_enabled = false
-func _on_select_map_block_mouse_exited():
-	$SelectMapBlock/MeshInstance3D.get_active_material(0).emission_enabled = false
-func _on_exit_block_mouse_exited():
-	$ExitBlock/MeshInstance3D.get_active_material(0).emission_enabled = false
+# unhighlight when mouse exits the block
+func _on_block_mouse_exited(block:String):
+	get_node(block).visible = false
 
 
 # validate chosen file, and show error messages if invalid
-func _on_pick_map_screen_closed(JSONPath):
-	var levelText:String
-	if OS.get_name() == "Web":
+func _on_pick_map_screen_closed(JSONPath:String):
+	if OS.get_name() == "Web" and not JSONPath.begins_with("res://"):
 		$HTTPRequest.request(JSONPath)
 		return
 	# try to open the file
@@ -108,6 +90,10 @@ func validateJSONString(path:String, data:String):
 			"There was an error when parsing %s:\nError at line %s:\n%s"
 			%[path, parser.get_error_line(), parser.get_error_message()]
 		)
+		return
+	var mapResponse = MapBuilder.is_valid(parser.data as Dictionary)
+	if mapResponse:
+		show_parse_error_message(mapResponse)
 		return
 	# we undo the error message side effects
 	rem_robot_ragdoll()
@@ -158,7 +144,7 @@ func _on_pick_map_screen_request_error(errorCode):
 	show_parse_error_message(errorCode)
 
 # this function connects to the HTTPRequest node
-func _on_http_request_request_completed(result, response_code, headers, body):
+func _on_http_request_request_completed(result, response_code, _headers, body):
 	if result:
 		# show the error message when we couldn't fetch the level
 		show_parse_error_message(
