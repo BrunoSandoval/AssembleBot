@@ -75,3 +75,12 @@ func _on_CamMenu_toggled(button_pressed):
 
 func _on_back_button_pressed():
 	GameMaster.back_to_main_menu()
+
+func _on_info_button_pressed():
+	$InfoTabs.visible = !$InfoTabs.visible
+
+func _on_info_tabs_tab_clicked(tab):
+	if tab != 2:
+		return
+	$InfoTabs.visible = false
+	$InfoTabs.current_tab = 0

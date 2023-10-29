@@ -365,6 +365,130 @@ anchor_right = 0.2
 anchor_bottom = 0.98
 text = "Back"
 
+[node name="InfoButton" type="Button" parent="GUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.39
+anchor_top = 0.02
+anchor_right = 0.45
+anchor_bottom = 0.08
+text = "Help"
+
+[node name="InfoTabs" type="TabContainer" parent="GUI"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.12
+anchor_top = 0.1
+anchor_right = 0.59
+anchor_bottom = 0.9
+
+[node name="Instructions" type="RichTextLabel" parent="GUI/InfoTabs"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "[color=lime]Note: instructions are case insensitive[/color]
+
+    [color=hotpink]mov[/color] [color=skyblue]from:int/reg[/color] [color=goldenrod]to:reg[/color]
+[color=khaki]copies[/color] the [color=skyblue]from[/color] number, or the number in the [color=skyblue]from[/color] register onto the [color=goldenrod]to[/color] register
+
+
+    [color=hotpink]jmp[/color] [color=lightgreen]destination:int/reg[/color]
+inconditional jump, sends execution to the line in the [color=lightgreen]destination[/color]
+
+    [color=hotpink]jez[/color] [color=skyblue]condition:int/reg[/color] [color=lightgreen]destination:int/reg[/color]
+sends execution to the [color=lightgreen]destination[/color] if the [color=skyblue]condition[/color] number is zero
+
+    [color=hotpink]jnz[/color] [color=skyblue]condition:int/reg[/color] [color=lightgreen]destination:int/reg[/color]
+sends execution to the [color=lightgreen]destination[/color] if the [color=skyblue]condition[/color] number is [color=indianred]NOT[/color] zero
+
+    [color=hotpink]jeq[/color] [color=skyblue]conditionA:int/reg[/color] [color=powderblue]conditionB:int/reg[/color] [color=lightgreen]destination:int/reg[/color]
+sends execution to the [color=lightgreen]destination[/color] if [color=skyblue]both[/color] [color=powderblue]condition[/color] numbers [color=khaki]are equal[/color]
+
+    [color=hotpink]jne[/color] [color=skyblue]conditionA:int/reg[/color] [color=powderblue]conditionB:int/reg[/color] [color=lightgreen]destination:int/reg[/color]
+sends execution to the [color=lightgreen]destination[/color] if [color=skyblue]both[/color] [color=powderblue]condition[/color] numbers [color=khaki]are different[/color]
+
+    [color=hotpink]jgt[/color] [color=skyblue]conditionA:int/reg[/color] [color=powderblue]conditionB:int/reg[/color] [color=lightgreen]destination:int/reg[/color]
+sends execution to the [color=lightgreen]destination[/color] if the [color=skyblue]first[/color] condition number [color=khaki]is greater than[/color] the [color=powderblue]second[/color]
+
+    [color=hotpink]jlt[/color] [color=skyblue]conditionA:int/reg[/color] [color=powderblue]conditionB:int/reg[/color] [color=lightgreen]destination:int/reg[/color]
+sends execution to the [color=lightgreen]destination[/color] if the [color=skyblue]first[/color] condition number [color=khaki]is lesser than[/color] the [color=powderblue]second[/color]
+
+    [color=hotpink]jge[/color] [color=skyblue]conditionA:int/reg[/color] [color=powderblue]conditionB:int/reg[/color] [color=lightgreen]destination:int/reg[/color]
+sends execution to the [color=lightgreen]destination[/color] if the [color=skyblue]first[/color] condition number [color=khaki]is greater than or equal to[/color] the [color=powderblue]second[/color]
+
+    [color=hotpink]jle[/color] [color=skyblue]conditionA:int/reg[/color] [color=powderblue]conditionB:int/reg[/color] [color=lightgreen]destination:int/reg[/color]
+sends execution to the [color=lightgreen]destination[/color] if the [color=skyblue]first[/color] condition number [color=khaki]is lesser than or equal to[/color] the [color=powderblue]second[/color]
+
+
+    [color=hotpink]add[/color] [color=skyblue]numA:int/reg[/color] [color=powderblue]numB:int/reg[/color] [color=goldenrod]out:reg[/color]
+[color=khaki]adds[/color] together the numbers in [color=skyblue]the[/color] [color=powderblue]inputs[/color] and places the result in the [color=goldenrod]output[/color] register
+
+    [color=hotpink]sub[/color] [color=skyblue]numA:int/reg[/color] [color=powderblue]numB:int/reg[/color] [color=goldenrod]out:reg[/color]
+[color=khaki]substracts[/color] the [color=powderblue]second input[/color] from the [color=skyblue]first[/color] and places the result in the [color=goldenrod]output[/color] register
+
+    [color=hotpink]mul[/color] [color=skyblue]numA:int/reg[/color] [color=powderblue]numB:int/reg[/color] [color=goldenrod]out:reg[/color]
+[color=khaki]multiplies[/color] together the numbers in [color=skyblue]the[/color] [color=powderblue]inputs[/color] and places the result in the out register
+
+    [color=hotpink]div[/color] [color=skyblue]numA:int/reg[/color] [color=powderblue]numB:int/reg[/color] [color=goldenrod]out:reg[/color]
+[color=khaki]divides[/color] the [color=skyblue]first input[/color] by the [color=powderblue]second[/color] and places the result in the [color=goldenrod]output[/color] register result is rounded down
+
+    [color=hotpink]mod[/color] [color=skyblue]numA:int/reg[/color] [color=powderblue]numB:int/reg[/color] [color=goldenrod]out:reg[/color]
+places the [color=khaki]remainder[/color] of the division of the [color=skyblue]first[/color] number by the [color=powderblue]second[/color] number and places it in the [color=goldenrod]output[/color] register
+
+
+    [color=hotpink]shr[/color] [color=skyblue]in:int/reg[/color] [color=goldenrod]out:reg[/color]
+[color=khaki]shifts the bits[/color] of the number in the [color=skyblue]input[/color] [color=khaki]one position to the right[/color] and places that in the [color=goldenrod]output[/color] register
+
+    [color=hotpink]shl[/color] [color=skyblue]in:int/reg[/color] [color=goldenrod]out:reg[/color]
+[color=khaki]shifts the bits[/color] of the number in the [color=skyblue]input[/color] [color=khaki]one position to the left[/color] and places the result in the [color=goldenrod]output[/color] register
+
+    [color=hotpink]and[/color] [color=skyblue]inA:int/reg[/color] [color=powderblue]inB:int/reg[/color] [color=goldenrod]out:reg[/color]
+[color=khaki]ands the bits[/color] of the [color=skyblue]two[/color] [color=powderblue]inputs[/color] together and places the result in the [color=goldenrod]output[/color] register
+
+    [color=hotpink]or[/color]  [color=skyblue]inA:int/reg[/color] [color=powderblue]inB:int/reg[/color] [color=goldenrod]out:reg[/color]
+[color=khaki]ors the bits[/color] of the [color=skyblue]two[/color] [color=powderblue]inputs[/color] together and places the result in the [color=goldenrod]output[/color] register
+
+    [color=hotpink]xor[/color] [color=skyblue]inA:int/reg[/color] [color=powderblue]inB:int/reg[/color] [color=goldenrod]out:reg[/color]
+[color=khaki]xors the bits[/color] of the [color=skyblue]two[/color] [color=powderblue]inputs[/color] together and places the result in the [color=goldenrod]output[/color] register
+
+    [color=hotpink]not[/color] [color=skyblue]in:int/reg[/color] [color=goldenrod]out:reg[/color]
+[color=khaki]filps all the bits[/color] in the [color=skyblue]input[/color] register and places that number in the [color=goldenrod]output[/color] register"
+autowrap_mode = 2
+
+[node name="Registers" type="RichTextLabel" parent="GUI/InfoTabs"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+bbcode_enabled = true
+text = "[color=lime]Note: register names are case insensitive[/color]
+
+[color=lightgreen]Registers[/color] are places to store data, the robot has 8 registers, 6 general purpose ([color=lightgreen]reg0[/color]-[color=lightgreen]reg5[/color]) and two functional ([color=lightgreen]rob[/color], [color=lightgreen]eye[/color])
+
+[color=lightgreen]Registers[/color] can hold [color=khaki]8-bit unsigned integers[/color], and they will [color=salmon]wrap around accordingly[/color]
+    [color=gray](for example [/color][color=skyblue]255[/color][color=gray]+[/color][color=skyblue]1[/color][color=gray] will wrap around to [/color][color=skyblue]0[/color][color=gray], equally, [/color][color=skyblue]0[/color][color=gray]-[/color][color=skyblue]1[/color][color=gray] will be turned to [/color][color=skyblue]255[/color][color=gray])[/color]
+
+the rob register, when a value other than [color=skyblue]0[/color] is [color=lightgreen]written[/color] to it, will make the robot [color=khaki]execute the action assigned[/color]
+    [color=skyblue]0[/color] - Nothing
+    [color=skyblue]1[/color] - Step forward
+    [color=skyblue]2[/color] - Step back
+    [color=skyblue]3[/color] - Turn right
+    [color=skyblue]4[/color] - Turn left
+    [color=skyblue]5[/color] - Turn around
+    [color=skyblue]6[/color] - Wave hi
+[color=skyblue]all other values[/color] written to the [color=lightgreen]register[/color] [color=salmon]will be ignored[/color], the register is flushed with every robot action
+
+the [color=lightgreen]eye register[/color] will hold a value denoting what the robot has [color=khaki]immediately in front of it[/color]
+    [color=skyblue]0[/color] - Nothing
+    [color=skyblue]1[/color] - Wall
+values can be written to the register, but they will [color=salmon]do nothing[/color], the register is updated with every robot action"
+autowrap_mode = 2
+
+[node name="Close" type="Control" parent="GUI/InfoTabs"]
+visible = false
+layout_mode = 2
+
 [connection signal="robotFinished" from="Robot" to="." method="_on_Robot_robotFinished"]
 [connection signal="pressed" from="GUI/Run" to="." method="_on_Run_pressed"]
 [connection signal="pressed" from="GUI/Step" to="." method="_on_Step_pressed"]
@@ -379,3 +503,5 @@ text = "Back"
 [connection signal="pressed" from="GUI/CamMenu/Options/ShoulderSurfL" to="Camera3D" method="_on_ShoulderSurfL_pressed"]
 [connection signal="value_changed" from="GUI/SpeedBox" to="Robot" method="set_speed"]
 [connection signal="pressed" from="GUI/BackButton" to="GUI" method="_on_back_button_pressed"]
+[connection signal="pressed" from="GUI/InfoButton" to="GUI" method="_on_info_button_pressed"]
+[connection signal="tab_clicked" from="GUI/InfoTabs" to="GUI" method="_on_info_tabs_tab_clicked"]
