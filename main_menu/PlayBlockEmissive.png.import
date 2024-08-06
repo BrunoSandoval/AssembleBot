@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cjmqu0vx4qmv7"
 path.s3tc="res://.godot/imported/PlayBlockEmissive.png-865d16aad41225604dee70025bab377b.s3tc.ctex"
+path.etc2="res://.godot/imported/PlayBlockEmissive.png-865d16aad41225604dee70025bab377b.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://main_menu/PlayBlockEmissive.png"
-dest_files=["res://.godot/imported/PlayBlockEmissive.png-865d16aad41225604dee70025bab377b.s3tc.ctex"]
+dest_files=["res://.godot/imported/PlayBlockEmissive.png-865d16aad41225604dee70025bab377b.s3tc.ctex", "res://.godot/imported/PlayBlockEmissive.png-865d16aad41225604dee70025bab377b.etc2.ctex"]
 
 [params]
 

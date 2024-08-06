@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="32"
+   height="32"
+   viewBox="0 0 8.4666666 8.4666666"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   sodipodi:docname="ErrorIcon.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#999999"
+     borderopacity="1"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="23.404489"
+     inkscape:cx="14.206676"
+     inkscape:cy="16.300292"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <ellipse
+       style="fill:#ff0000;stroke:#800000;stroke-width:0.458164"
+       id="path1"
+       cx="4.2393041"
+       cy="4.2336516"
+       rx="3.9955513"
+       ry="4.0012035" />
+    <rect
+       style="fill:#ffff00;stroke:#800000;stroke-width:0.30937"
+       id="rect2"
+       width="1.1422186"
+       height="4.3527846"
+       x="3.6512377"
+       y="0.83633965" />
+    <circle
+       style="fill:#ffff00;stroke:#800000;stroke-width:0.264583"
+       id="path2"
+       cx="4.2393045"
+       cy="6.624619"
+       r="0.6782887" />
+  </g>
+</svg>

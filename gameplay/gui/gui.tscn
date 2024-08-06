@@ -1,0 +1,416 @@
+[gd_scene load_steps=26 format=3 uid="uid://bi6lws4ykuav4"]
+
+[ext_resource type="Script" path="res://gameplay/gui/gui.gd" id="1_a2wyt"]
+[ext_resource type="Texture2D" uid="uid://crlgptydrdioe" path="res://gameplay/gui/Buttons/ButtonArrow1.png" id="2_f4j2c"]
+[ext_resource type="Texture2D" uid="uid://bppdguuoq8bhy" path="res://gameplay/gui/Buttons/ButtonArrowUp1.png" id="2_tow86"]
+[ext_resource type="Texture2D" uid="uid://bvprsbfd8voyn" path="res://gameplay/gui/Buttons/ButtonArrowUp3.png" id="3_uxep8"]
+[ext_resource type="Texture2D" uid="uid://dlouaqyf465t3" path="res://gameplay/gui/Buttons/ButtonArrow3.png" id="3_w6xxp"]
+[ext_resource type="Texture2D" uid="uid://8gd2ornyqo28" path="res://gameplay/gui/Buttons/ButtonArrowUp2.png" id="4_cx3xg"]
+[ext_resource type="Texture2D" uid="uid://coj80uw8ixfla" path="res://gameplay/gui/Buttons/ButtonArrow2.png" id="4_kmqax"]
+[ext_resource type="Texture2D" uid="uid://cynwdr2hkgwt2" path="res://gameplay/gui/Buttons/ButtonArrow4.png" id="5_1j532"]
+[ext_resource type="Texture2D" uid="uid://b24fv57yjwf11" path="res://gameplay/gui/Buttons/ButtonArrowUp4.png" id="5_6wm2o"]
+[ext_resource type="BitMap" uid="uid://bfj0kknuh03fd" path="res://gameplay/gui/Buttons/ButtonMask.bmp" id="7_4076m"]
+[ext_resource type="Texture2D" uid="uid://mm7n2hgfroqi" path="res://gameplay/gui/Buttons/ButtonArrowBar1.png" id="8_7e0oj"]
+[ext_resource type="Texture2D" uid="uid://c3ca351gut3a5" path="res://gameplay/gui/Buttons/ButtonArrowBar2.png" id="9_avfhg"]
+[ext_resource type="Texture2D" uid="uid://b7f3ve87eppg4" path="res://gameplay/gui/Buttons/ButtonArrowBar3.png" id="10_oamb7"]
+[ext_resource type="Texture2D" uid="uid://55a523hyst88" path="res://gameplay/gui/Buttons/ButtonDoubleBar1.png" id="11_b0qy5"]
+[ext_resource type="Texture2D" uid="uid://c0bdo6por5vs3" path="res://gameplay/gui/Buttons/ButtonArrowBar4.png" id="11_wwlig"]
+[ext_resource type="Texture2D" uid="uid://lhdxfqirrdbc" path="res://gameplay/gui/Buttons/ButtonDoubleBar3.png" id="12_hyses"]
+[ext_resource type="Texture2D" uid="uid://4qb1wr6hx1ny" path="res://gameplay/gui/Buttons/ButtonCircleArrow1.png" id="13_4va06"]
+[ext_resource type="Texture2D" uid="uid://cecn8e8d4q5sk" path="res://gameplay/gui/Buttons/ButtonDoubleBar2.png" id="13_wy2wn"]
+[ext_resource type="Texture2D" uid="uid://bqmojca5vildf" path="res://gameplay/gui/Buttons/ButtonCircleArrow2.png" id="14_550jh"]
+[ext_resource type="Texture2D" uid="uid://rons1v3o2xxy" path="res://gameplay/gui/Buttons/ButtonDoubleBar4.png" id="14_a45c4"]
+[ext_resource type="Texture2D" uid="uid://1wbd0m6i25t5" path="res://gameplay/gui/Buttons/ButtonCircleArrow3.png" id="15_6w6jo"]
+[ext_resource type="Texture2D" uid="uid://dbb1pecaco5ey" path="res://gameplay/gui/Buttons/ButtonCircleArrow4.png" id="16_jgt23"]
+
+[sub_resource type="SystemFont" id="SystemFont_kodgb"]
+font_names = PackedStringArray("Consolas", "Monospace")
+subpixel_positioning = 0
+
+[sub_resource type="CodeHighlighter" id="CodeHighlighter_lpd8a"]
+number_color = Color(0.643137, 1, 0.898039, 1)
+symbol_color = Color(0.698039, 0.819608, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sljjk"]
+bg_color = Color(0.2, 0.2, 0.2, 1)
+
+[node name="GUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a2wyt")
+opcode_color = Color(0.980392, 0.431373, 0.509804, 1)
+reg_colors = Array[Color]([Color(0.596078, 0.839216, 0.858824, 1), Color(0.596078, 0.839216, 0.858824, 1), Color(0.505882, 0.815686, 0.784314, 1), Color(0.392157, 0.796078, 0.709804, 1), Color(0.215686, 0.745098, 0.584314, 1)])
+
+[node name="Program" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Compile" type="TextureButton" parent="Program"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6
+anchor_top = 0.01
+anchor_right = 0.65
+anchor_bottom = 0.09
+texture_normal = ExtResource("2_tow86")
+texture_pressed = ExtResource("3_uxep8")
+texture_hover = ExtResource("4_cx3xg")
+texture_disabled = ExtResource("5_6wm2o")
+texture_click_mask = ExtResource("7_4076m")
+stretch_mode = 5
+
+[node name="Run" type="TextureButton" parent="Program"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6
+anchor_top = 0.01
+anchor_right = 0.65
+anchor_bottom = 0.09
+texture_normal = ExtResource("2_f4j2c")
+texture_pressed = ExtResource("3_w6xxp")
+texture_hover = ExtResource("4_kmqax")
+texture_disabled = ExtResource("5_1j532")
+texture_click_mask = ExtResource("7_4076m")
+stretch_mode = 5
+
+[node name="Stop" type="TextureButton" parent="Program"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6
+anchor_top = 0.01
+anchor_right = 0.65
+anchor_bottom = 0.09
+texture_normal = ExtResource("11_b0qy5")
+texture_pressed = ExtResource("12_hyses")
+texture_hover = ExtResource("13_wy2wn")
+texture_disabled = ExtResource("14_a45c4")
+texture_click_mask = ExtResource("7_4076m")
+stretch_mode = 5
+
+[node name="Step" type="TextureButton" parent="Program"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.65
+anchor_top = 0.01
+anchor_right = 0.7
+anchor_bottom = 0.09
+disabled = true
+texture_normal = ExtResource("8_7e0oj")
+texture_pressed = ExtResource("10_oamb7")
+texture_hover = ExtResource("9_avfhg")
+texture_disabled = ExtResource("11_wwlig")
+texture_click_mask = ExtResource("7_4076m")
+stretch_mode = 5
+
+[node name="Reset" type="TextureButton" parent="Program"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.94
+anchor_top = 0.01
+anchor_right = 0.99
+anchor_bottom = 0.09
+disabled = true
+texture_normal = ExtResource("13_4va06")
+texture_pressed = ExtResource("15_6w6jo")
+texture_hover = ExtResource("14_550jh")
+texture_disabled = ExtResource("16_jgt23")
+texture_click_mask = ExtResource("7_4076m")
+stretch_mode = 5
+
+[node name="BackButton" type="Button" parent="Program"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.92
+anchor_right = 0.1
+anchor_bottom = 0.98
+text = "Back"
+
+[node name="Program" type="CodeEdit" parent="Program"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6
+anchor_top = 0.09
+anchor_right = 0.99
+anchor_bottom = 0.98
+theme_override_fonts/font = SubResource("SystemFont_kodgb")
+theme_override_font_sizes/font_size = 18
+text = "mov $6, %rax
+loop: mov %rax, %rob #hi
+jez break
+sub $1, %rax
+jmp loop
+break:"
+minimap_width = 60
+syntax_highlighter = SubResource("CodeHighlighter_lpd8a")
+highlight_current_line = true
+draw_tabs = true
+draw_spaces = true
+gutters_draw_breakpoints_gutter = true
+gutters_draw_executing_lines = true
+gutters_draw_line_numbers = true
+gutters_zero_pad_line_numbers = true
+delimiter_comments = Array[String](["//", "#"])
+indent_size = 2
+
+[node name="Size" type="Label" parent="Program"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.71
+anchor_top = 0.02
+anchor_right = 0.93
+anchor_bottom = 0.08
+grow_horizontal = 2
+grow_vertical = 2
+text = "??/256 Bytes "
+
+[node name="Timer" type="Timer" parent="Program"]
+wait_time = 0.1
+
+[node name="RegisterShow" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.09
+anchor_right = 0.12
+anchor_bottom = 0.91
+grow_vertical = 2
+
+[node name="RegisterContainer" type="VBoxContainer" parent="RegisterShow"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="SpeedBox" type="SpinBox" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.13
+anchor_top = 0.02
+anchor_right = 0.24
+anchor_bottom = 0.08
+min_value = 1.0
+max_value = 30.0
+value = 10.0
+
+[node name="InfoButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.02
+anchor_right = 0.41
+anchor_bottom = 0.08
+text = "Help"
+
+[node name="OptionButton" type="OptionButton" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.42
+anchor_top = 0.02
+anchor_right = 0.59
+anchor_bottom = 0.08
+item_count = 4
+selected = 0
+popup/item_0/text = "Fixed View"
+popup/item_0/id = 0
+popup/item_1/text = "Top Down"
+popup/item_1/id = 1
+popup/item_2/text = "First Person"
+popup/item_2/id = 2
+popup/item_3/text = "Third Person"
+popup/item_3/id = 3
+
+[node name="RegisterMenuToggle" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.02
+anchor_right = 0.12
+anchor_bottom = 0.08
+toggle_mode = true
+text = "Reg Debug"
+
+[node name="RegisterMenu" type="ScrollContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.09
+anchor_right = 0.12
+anchor_bottom = 0.6
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_sljjk")
+horizontal_scroll_mode = 0
+
+[node name="VBox" type="VBoxContainer" parent="RegisterMenu"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="All" type="Button" parent="RegisterMenu/VBox"]
+layout_mode = 2
+text = "Toggle All"
+
+[node name="ErrorContainer" type="VBoxContainer" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.13
+anchor_top = 0.09
+anchor_right = 0.59
+anchor_bottom = 0.98
+grow_vertical = 0
+theme_override_constants/separation = 4
+alignment = 2
+
+[node name="InfoTabs" type="TabContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.12
+anchor_top = 0.1
+anchor_right = 0.59
+anchor_bottom = 0.9
+
+[node name="Instructions" type="VBoxContainer" parent="InfoTabs"]
+layout_mode = 2
+
+[node name="DocsButton" type="Button" parent="InfoTabs/Instructions"]
+layout_mode = 2
+text = "AMD64 Documentation"
+
+[node name="Instructions" type="RichTextLabel" parent="InfoTabs/Instructions"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[color=lime]Note: instructions are case insensitive[/color]
+
+The only instructions currently implemented are [color=hotpink]MOV[/color], [color=hotpink]ADD[/color], [color=hotpink]SUB[/color], [color=hotpink]JMP[/color] and [color=hotpink]JEZ[/color]
+
+    [color=hotpink]mov[/color] [color=skyblue]src:reg[/color] [color=goldenrod]dest:int/reg[/color]
+[color=khaki]copies[/color] the [color=skyblue]from[/color] number, or the number in the [color=skyblue]from[/color] register onto the [color=goldenrod]to[/color] register
+
+    [color=hotpink]add[/color]  [color=powderblue]operand 2:int/reg[/color] [color=goldenrod]dest/operand 1:reg[/color]
+[color=khaki]adds[/color] together the numbers in [color=skyblue]the[/color] [color=powderblue]inputs[/color] and places the result in the [color=goldenrod]first input[/color] register
+
+    [color=hotpink]sub[/color] [color=powderblue]operand 2:int/reg[/color] [color=goldenrod]dest/operand 1:reg[/color]
+[color=khaki]substracts[/color] the [color=powderblue]second operand[/color] from the [color=skyblue]first[/color] and places the result in the [color=goldenrod]first input[/color] register
+
+    [color=hotpink]jmp[/color] [color=lightgreen]destination:int/reg/label[/color]
+inconditional jump, sends execution to the line in the [color=lightgreen]destination[/color]
+
+    [color=hotpink]jez[/color] [color=lightgreen]destination:int/reg/label[/color]
+sends execution to the [color=lightgreen]destination[/color] if the [color=darkorchid]ZF (zero flag)[/color]  in [color=darkturquoise]RFLAGS[/color]  is present
+
+
+
+
+
+    [color=hotpink]jnz[/color] [color=skyblue]condition:int/reg[/color] [color=lightgreen]destination:int/reg[/color]
+sends execution to the [color=lightgreen]destination[/color] if the [color=skyblue]condition[/color] number is [color=indianred]NOT[/color] zero
+
+    [color=hotpink]jeq[/color] [color=skyblue]conditionA:int/reg[/color] [color=powderblue]conditionB:int/reg[/color] [color=lightgreen]destination:int/reg[/color]
+sends execution to the [color=lightgreen]destination[/color] if [color=skyblue]both[/color] [color=powderblue]condition[/color] numbers [color=khaki]are equal[/color]
+
+    [color=hotpink]jne[/color] [color=skyblue]conditionA:int/reg[/color] [color=powderblue]conditionB:int/reg[/color] [color=lightgreen]destination:int/reg[/color]
+sends execution to the [color=lightgreen]destination[/color] if [color=skyblue]both[/color] [color=powderblue]condition[/color] numbers [color=khaki]are different[/color]
+
+    [color=hotpink]jgt[/color] [color=skyblue]conditionA:int/reg[/color] [color=powderblue]conditionB:int/reg[/color] [color=lightgreen]destination:int/reg[/color]
+sends execution to the [color=lightgreen]destination[/color] if the [color=skyblue]first[/color] condition number [color=khaki]is greater than[/color] the [color=powderblue]second[/color]
+
+    [color=hotpink]jlt[/color] [color=skyblue]conditionA:int/reg[/color] [color=powderblue]conditionB:int/reg[/color] [color=lightgreen]destination:int/reg[/color]
+sends execution to the [color=lightgreen]destination[/color] if the [color=skyblue]first[/color] condition number [color=khaki]is lesser than[/color] the [color=powderblue]second[/color]
+
+    [color=hotpink]jge[/color] [color=skyblue]conditionA:int/reg[/color] [color=powderblue]conditionB:int/reg[/color] [color=lightgreen]destination:int/reg[/color]
+sends execution to the [color=lightgreen]destination[/color] if the [color=skyblue]first[/color] condition number [color=khaki]is greater than or equal to[/color] the [color=powderblue]second[/color]
+
+    [color=hotpink]jle[/color] [color=skyblue]conditionA:int/reg[/color] [color=powderblue]conditionB:int/reg[/color] [color=lightgreen]destination:int/reg[/color]
+sends execution to the [color=lightgreen]destination[/color] if the [color=skyblue]first[/color] condition number [color=khaki]is lesser than or equal to[/color] the [color=powderblue]second[/color]
+
+    [color=hotpink]mul[/color] [color=skyblue]numA:int/reg[/color] [color=powderblue]numB:int/reg[/color] [color=goldenrod]out:reg[/color]
+[color=khaki]multiplies[/color] together the numbers in [color=skyblue]the[/color] [color=powderblue]inputs[/color] and places the result in the out register
+
+    [color=hotpink]div[/color] [color=skyblue]numA:int/reg[/color] [color=powderblue]numB:int/reg[/color] [color=goldenrod]out:reg[/color]
+[color=khaki]divides[/color] the [color=skyblue]first input[/color] by the [color=powderblue]second[/color] and places the result in the [color=goldenrod]output[/color] register result is rounded down
+
+    [color=hotpink]mod[/color] [color=skyblue]numA:int/reg[/color] [color=powderblue]numB:int/reg[/color] [color=goldenrod]out:reg[/color]
+places the [color=khaki]remainder[/color] of the division of the [color=skyblue]first[/color] number by the [color=powderblue]second[/color] number and places it in the [color=goldenrod]output[/color] register
+
+
+    [color=hotpink]shr[/color] [color=skyblue]in:int/reg[/color] [color=goldenrod]out:reg[/color]
+[color=khaki]shifts the bits[/color] of the number in the [color=skyblue]input[/color] [color=khaki]one position to the right[/color] and places that in the [color=goldenrod]output[/color] register
+
+    [color=hotpink]shl[/color] [color=skyblue]in:int/reg[/color] [color=goldenrod]out:reg[/color]
+[color=khaki]shifts the bits[/color] of the number in the [color=skyblue]input[/color] [color=khaki]one position to the left[/color] and places the result in the [color=goldenrod]output[/color] register
+
+    [color=hotpink]and[/color] [color=skyblue]inA:int/reg[/color] [color=powderblue]inB:int/reg[/color] [color=goldenrod]out:reg[/color]
+[color=khaki]ands the bits[/color] of the [color=skyblue]two[/color] [color=powderblue]inputs[/color] together and places the result in the [color=goldenrod]output[/color] register
+
+    [color=hotpink]or[/color]  [color=skyblue]inA:int/reg[/color] [color=powderblue]inB:int/reg[/color] [color=goldenrod]out:reg[/color]
+[color=khaki]ors the bits[/color] of the [color=skyblue]two[/color] [color=powderblue]inputs[/color] together and places the result in the [color=goldenrod]output[/color] register
+
+    [color=hotpink]xor[/color] [color=skyblue]inA:int/reg[/color] [color=powderblue]inB:int/reg[/color] [color=goldenrod]out:reg[/color]
+[color=khaki]xors the bits[/color] of the [color=skyblue]two[/color] [color=powderblue]inputs[/color] together and places the result in the [color=goldenrod]output[/color] register
+
+    [color=hotpink]not[/color] [color=skyblue]in:int/reg[/color] [color=goldenrod]out:reg[/color]
+[color=khaki]filps all the bits[/color] in the [color=skyblue]input[/color] register and places that number in the [color=goldenrod]output[/color] register
+"
+autowrap_mode = 2
+
+[node name="Registers" type="RichTextLabel" parent="InfoTabs"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+bbcode_enabled = true
+text = "[color=lime]Note: register names are case insensitive[/color]
+
+[color=lightgreen]Registers[/color] are places to store data, the robot has 19, 16 general purpose ([color=lightgreen]RAX[/color]-[color=lightgreen]RDX[/color], [color=lightgreen]RSI[/color], [color=lightgreen]RDI[/color], [color=lightgreen]RBP[/color], [color=lightgreen]RSP[/color], [color=lightgreen]R8[/color]-[color=lightgreen]R15[/color]) and three functional ([color=lightgreen]ROB[/color] (for robot actions), [color=lightgreen]EYE[/color] (for what's in front of the robot), [color=lightgreen]RIP[/color] (instruction pointer) and [color=lightgreen]RFLAGS[/color])s
+
+[color=lightgreen]Registers[/color] can hold [color=khaki]64-bit signed integers[/color].
+
+the rob register, when a value other than [color=skyblue]0[/color] is [color=lightgreen]written[/color] to it, will make the robot [color=khaki]execute the action assigned[/color]
+    [color=skyblue]0[/color] - Nothing
+    [color=skyblue]1[/color] - Step forward
+    [color=skyblue]2[/color] - Step back
+    [color=skyblue]3[/color] - Turn right
+    [color=skyblue]4[/color] - Turn left
+    [color=skyblue]5[/color] - Turn around
+    [color=skyblue]6[/color] - Wave hi
+[color=skyblue]all other values[/color] written to the [color=lightgreen]register[/color] [color=salmon]will be ignored[/color], the register is flushed with every robot action
+
+the [color=lightgreen]eye register[/color] will hold a value denoting what the robot has [color=khaki]immediately in front of it[/color]
+    [color=skyblue]0[/color] - Nothing
+    [color=skyblue]1[/color] - Wall
+values can be written to the register, but they will [color=salmon]do nothing[/color], the register is updated with every robot action"
+autowrap_mode = 2
+
+[node name="Close" type="Control" parent="InfoTabs"]
+visible = false
+layout_mode = 2
+
+[connection signal="pressed" from="Program/Compile" to="." method="_on_compile_pressed"]
+[connection signal="pressed" from="Program/Run" to="." method="start_running"]
+[connection signal="pressed" from="Program/Stop" to="." method="stop_running"]
+[connection signal="pressed" from="Program/Step" to="." method="_on_step_pressed"]
+[connection signal="pressed" from="Program/Reset" to="." method="_on_reset_pressed"]
+[connection signal="pressed" from="Program/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="lines_edited_from" from="Program/Program" to="." method="_on_program_lines_edited_from"]
+[connection signal="timeout" from="Program/Timer" to="." method="step_program"]
+[connection signal="value_changed" from="SpeedBox" to="." method="_on_speed_box_value_changed"]
+[connection signal="pressed" from="InfoButton" to="." method="_on_info_button_pressed"]
+[connection signal="toggled" from="RegisterMenuToggle" to="RegisterMenu" method="set_visible"]
+[connection signal="pressed" from="RegisterMenu/VBox/All" to="." method="_on_toggle_all_regs_pressed"]
+[connection signal="tab_clicked" from="InfoTabs" to="." method="_on_info_tabs_tab_clicked"]
+[connection signal="pressed" from="InfoTabs/Instructions/DocsButton" to="." method="_on_docs_button_pressed"]

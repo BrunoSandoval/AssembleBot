@@ -1,0 +1,70 @@
+[gd_scene load_steps=13 format=3 uid="uid://df45ndsctidqu"]
+
+[ext_resource type="PackedScene" uid="uid://dpa4t0rj1qhrx" path="res://robots/regbot/RobotModel.blend" id="1_fg1qv"]
+[ext_resource type="Script" path="res://gameplay/gameplay.gd" id="1_w5qqt"]
+[ext_resource type="PackedScene" uid="uid://cybt47ccqb63u" path="res://game_map/game_map.tscn" id="2_0rr3i"]
+[ext_resource type="Script" path="res://robots/regbot/Regbot.gd" id="2_52lly"]
+[ext_resource type="Script" path="res://legacy/old_camera.gd" id="4_5ecoh"]
+[ext_resource type="PackedScene" uid="uid://bi6lws4ykuav4" path="res://gameplay/gui/gui.tscn" id="6_4vtn4"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_27sea"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_imdmj"]
+sky_material = SubResource("ProceduralSkyMaterial_27sea")
+
+[sub_resource type="Environment" id="Environment_odbej"]
+background_mode = 2
+sky = SubResource("Sky_imdmj")
+ssao_enabled = true
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6my6l"]
+height = 1.0
+radius = 0.25
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qc2ko"]
+radius = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_cgfw5"]
+radius = 0.2
+
+[node name="Gameplay" type="Node3D"]
+script = ExtResource("1_w5qqt")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.250002, 0.433016, 0, 0.866025, 0.5, -0.500003, 0.433012, -0.749998, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_odbej")
+
+[node name="Robot" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0)
+floor_stop_on_slope = false
+script = ExtResource("2_52lly")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Robot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_6my6l")
+
+[node name="Eyes" type="Area3D" parent="Robot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, -1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Robot/Eyes"]
+shape = SubResource("SphereShape3D_qc2ko")
+
+[node name="EyesBack" type="Area3D" parent="Robot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Robot/EyesBack"]
+shape = SubResource("SphereShape3D_cgfw5")
+
+[node name="RobotModel" parent="Robot" instance=ExtResource("1_fg1qv")]
+
+[node name="GameMap" parent="." instance=ExtResource("2_0rr3i")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+script = ExtResource("4_5ecoh")
+
+[node name="GUI" parent="." instance=ExtResource("6_4vtn4")]

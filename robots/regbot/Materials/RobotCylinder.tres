@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cvpux2jrl24qd"]
+
+[ext_resource type="Texture2D" uid="uid://qemtk6geev8s" path="res://robots/regbot/RobotBody.png" id="1_gqatb"]
+
+[resource]
+resource_name = "RobotCylinder"
+shading_mode = 2
+albedo_texture = ExtResource("1_gqatb")
+texture_filter = 2

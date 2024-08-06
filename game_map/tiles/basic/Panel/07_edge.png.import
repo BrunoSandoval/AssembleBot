@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c6dxc0ryiydxb"
 path.s3tc="res://.godot/imported/07_edge.png-d6d46740c72f9f955eb2349dcac06949.s3tc.ctex"
+path.etc2="res://.godot/imported/07_edge.png-d6d46740c72f9f955eb2349dcac06949.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://game_map/tiles/basic/Panel/07_edge.png"
-dest_files=["res://.godot/imported/07_edge.png-d6d46740c72f9f955eb2349dcac06949.s3tc.ctex"]
+dest_files=["res://.godot/imported/07_edge.png-d6d46740c72f9f955eb2349dcac06949.s3tc.ctex", "res://.godot/imported/07_edge.png-d6d46740c72f9f955eb2349dcac06949.etc2.ctex"]
 
 [params]
 

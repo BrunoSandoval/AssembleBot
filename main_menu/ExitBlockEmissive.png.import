@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://hdaxgqb7e0nv"
 path.s3tc="res://.godot/imported/ExitBlockEmissive.png-f658da3e5ac1ffe156b4110cfdfd13a6.s3tc.ctex"
+path.etc2="res://.godot/imported/ExitBlockEmissive.png-f658da3e5ac1ffe156b4110cfdfd13a6.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://main_menu/ExitBlockEmissive.png"
-dest_files=["res://.godot/imported/ExitBlockEmissive.png-f658da3e5ac1ffe156b4110cfdfd13a6.s3tc.ctex"]
+dest_files=["res://.godot/imported/ExitBlockEmissive.png-f658da3e5ac1ffe156b4110cfdfd13a6.s3tc.ctex", "res://.godot/imported/ExitBlockEmissive.png-f658da3e5ac1ffe156b4110cfdfd13a6.etc2.ctex"]
 
 [params]
 

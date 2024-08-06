@@ -54,12 +54,12 @@ func _on_exit_block_input_event(_camera, event, _position, _normal, _shape_idx):
 func _on_block_mouse_entered(block:String, checkMap:bool = false):
 	if $PickMapScreen.is_visible() || $ParseErrorMessage.visible || (checkMap and mapData == null):
 		return
-	get_node(block).visible = true
+	get_node(block+"/HighlightBlock").visible = true
 	$Bloop.play()
 
 # unhighlight when mouse exits the block
 func _on_block_mouse_exited(block:String):
-	get_node(block).visible = false
+	get_node(block+"/HighlightBlock").visible = false
 
 
 # validate chosen file, and show error messages if invalid
@@ -96,44 +96,17 @@ func validateJSONString(path:String, data:String):
 		show_parse_error_message(mapResponse)
 		return
 	# we undo the error message side effects
-	rem_robot_ragdoll()
-	$StartBlock/MeshInstance3D.get_active_material(0).albedo_color = Color.WHITE
+	$StartBlock/BaseBlock.get_active_material(0).albedo_color = Color.WHITE
 	mapData = parser.data
 
 # we show the error message, and disable the start button
 func show_parse_error_message(msg:String):
-	# obliterate that twink
-	add_robot_ragdoll()
 	# show the actual error message
 	$ParseErrorMessage.dialog_text = msg
 	$ParseErrorMessage.popup()
 	# disable the start button visually, and functionally respectively
-	$StartBlock/MeshInstance3D.get_active_material(0).albedo_color = Color("#696969")
+	$StartBlock/BaseBlock.get_active_material(0).albedo_color = Color("#696969")
 	mapData = null
-
-# a visual effect of the robot exploding
-func add_robot_ragdoll():
-	# when the robot is already exploded, do nothing
-	if robotRagdoll != null: 
-		return
-	# hide the actual robot
-	$RobotModel.visible = false
-	# create and prepare the fake exploding robot
-	robotRagdoll = load("res://robot/robot_ragdoll.tscn").instantiate()
-	robotRagdoll.position = $RobotModel.position
-	robotRagdoll.rotation = $RobotModel.rotation
-	robotRagdoll.explosionForce = 2
-	# mythbusters its ass
-	self.add_child(robotRagdoll)
-# cleanup the robot ragdoll
-func rem_robot_ragdoll():
-	# if there's nothing to clean up, we clean up nothing
-	if robotRagdoll == null: 
-		return
-	# unexist the exploded pieces of the robot
-	robotRagdoll.queue_free()
-	# unhide the actual robot
-	$RobotModel.visible = true
 
 # connected to the error window, to show the map picker when it closes
 func _on_parse_error_message_confirmed():

@@ -37,6 +37,8 @@ const keywordColors = {
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Program.syntax_highlighter.set_keyword_colors(keywordColors)
+	for child in $RegisterScroll/Registers.get_children():
+		$RegisterMenu.get_popup().add_check_item((child.find_child("Label") as Label).text)
 
 func displayError(msg):
 	$ErrorRect/ErrorLabel.text = msg
@@ -84,3 +86,7 @@ func _on_info_tabs_tab_clicked(tab):
 		return
 	$InfoTabs.visible = false
 	$InfoTabs.current_tab = 0
+
+
+func _on_register_menu_pressed():
+	print($RegisterMenu.get_popup().is_item_checked(0));

@@ -1,0 +1,535 @@
+[gd_scene load_steps=5 format=3 uid="uid://bi6lws4ykuav4"]
+
+[ext_resource type="Script" path="res://gameplay/gui/gui.gd" id="1_a2wyt"]
+
+[sub_resource type="SystemFont" id="SystemFont_kodgb"]
+font_names = PackedStringArray("Consolas", "Monospace")
+subpixel_positioning = 0
+
+[sub_resource type="CodeHighlighter" id="CodeHighlighter_lpd8a"]
+number_color = Color(0.643137, 1, 0.898039, 1)
+symbol_color = Color(0.698039, 0.819608, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sljjk"]
+bg_color = Color(0.2, 0.2, 0.2, 1)
+
+[node name="GUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a2wyt")
+
+[node name="Run" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6
+anchor_top = 0.02
+anchor_right = 0.66
+anchor_bottom = 0.08
+text = "Run"
+
+[node name="Step" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.67
+anchor_top = 0.02
+anchor_right = 0.76
+anchor_bottom = 0.08
+text = "Step"
+
+[node name="Reset" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.86
+anchor_top = 0.02
+anchor_right = 0.99
+anchor_bottom = 0.08
+text = "Reset"
+
+[node name="Program" type="CodeEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6
+anchor_top = 0.09
+anchor_right = 0.99
+anchor_bottom = 0.98
+theme_override_fonts/font = SubResource("SystemFont_kodgb")
+theme_override_font_sizes/font_size = 18
+minimap_width = 60
+syntax_highlighter = SubResource("CodeHighlighter_lpd8a")
+highlight_current_line = true
+draw_tabs = true
+draw_spaces = true
+gutters_draw_breakpoints_gutter = true
+gutters_draw_executing_lines = true
+gutters_draw_line_numbers = true
+gutters_zero_pad_line_numbers = true
+indent_size = 2
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.92
+anchor_right = 0.1
+anchor_bottom = 0.98
+text = "Back"
+
+[node name="ParserSelect" type="OptionButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.02
+anchor_right = 0.39
+anchor_bottom = 0.08
+item_count = 3
+selected = 0
+popup/item_0/text = "Legacy"
+popup/item_0/id = 0
+popup/item_1/text = "AT&T"
+popup/item_1/id = 1
+popup/item_2/text = "Intel"
+popup/item_2/id = 2
+
+[node name="RegisterShow" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.09
+anchor_right = 0.12
+anchor_bottom = 0.91
+grow_vertical = 2
+
+[node name="Registers" type="VBoxContainer" parent="RegisterShow"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="RegA" type="VBoxContainer" parent="RegisterShow/Registers"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="RegisterShow/Registers/RegA"]
+layout_mode = 2
+text = "reg0"
+
+[node name="Value" type="LineEdit" parent="RegisterShow/Registers/RegA"]
+layout_mode = 2
+text = "0"
+editable = false
+
+[node name="BinValue" type="LineEdit" parent="RegisterShow/Registers/RegA"]
+layout_mode = 2
+text = "00000000"
+editable = false
+
+[node name="RegB" type="VBoxContainer" parent="RegisterShow/Registers"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="RegisterShow/Registers/RegB"]
+layout_mode = 2
+text = "reg1"
+
+[node name="Value" type="LineEdit" parent="RegisterShow/Registers/RegB"]
+layout_mode = 2
+text = "0"
+editable = false
+
+[node name="BinValue" type="LineEdit" parent="RegisterShow/Registers/RegB"]
+layout_mode = 2
+text = "00000000"
+editable = false
+
+[node name="ContainerReg2" type="VBoxContainer" parent="RegisterShow/Registers"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="RegisterShow/Registers/ContainerReg2"]
+layout_mode = 2
+text = "reg2"
+
+[node name="Value" type="LineEdit" parent="RegisterShow/Registers/ContainerReg2"]
+layout_mode = 2
+text = "0"
+editable = false
+
+[node name="BinValue" type="LineEdit" parent="RegisterShow/Registers/ContainerReg2"]
+layout_mode = 2
+text = "00000000"
+editable = false
+
+[node name="ContainerReg3" type="VBoxContainer" parent="RegisterShow/Registers"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="RegisterShow/Registers/ContainerReg3"]
+layout_mode = 2
+text = "reg3"
+
+[node name="Value" type="LineEdit" parent="RegisterShow/Registers/ContainerReg3"]
+layout_mode = 2
+text = "0"
+editable = false
+
+[node name="BinValue" type="LineEdit" parent="RegisterShow/Registers/ContainerReg3"]
+layout_mode = 2
+text = "00000000"
+editable = false
+
+[node name="ContainerReg4" type="VBoxContainer" parent="RegisterShow/Registers"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="RegisterShow/Registers/ContainerReg4"]
+layout_mode = 2
+text = "reg4"
+
+[node name="Value" type="LineEdit" parent="RegisterShow/Registers/ContainerReg4"]
+layout_mode = 2
+text = "0"
+editable = false
+
+[node name="BinValue" type="LineEdit" parent="RegisterShow/Registers/ContainerReg4"]
+layout_mode = 2
+text = "00000000"
+editable = false
+
+[node name="ContainerReg5" type="VBoxContainer" parent="RegisterShow/Registers"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="RegisterShow/Registers/ContainerReg5"]
+layout_mode = 2
+text = "reg5"
+
+[node name="Value" type="LineEdit" parent="RegisterShow/Registers/ContainerReg5"]
+layout_mode = 2
+text = "0"
+editable = false
+
+[node name="BinValue" type="LineEdit" parent="RegisterShow/Registers/ContainerReg5"]
+layout_mode = 2
+text = "00000000"
+editable = false
+
+[node name="ContainerRegBot" type="VBoxContainer" parent="RegisterShow/Registers"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="RegisterShow/Registers/ContainerRegBot"]
+layout_mode = 2
+text = "rob"
+
+[node name="Value" type="LineEdit" parent="RegisterShow/Registers/ContainerRegBot"]
+layout_mode = 2
+text = "0"
+editable = false
+
+[node name="BinValue" type="LineEdit" parent="RegisterShow/Registers/ContainerRegBot"]
+layout_mode = 2
+text = "00000000"
+editable = false
+
+[node name="ContainerRegBotEyes" type="VBoxContainer" parent="RegisterShow/Registers"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="RegisterShow/Registers/ContainerRegBotEyes"]
+layout_mode = 2
+text = "eye"
+
+[node name="Value" type="LineEdit" parent="RegisterShow/Registers/ContainerRegBotEyes"]
+layout_mode = 2
+text = "0"
+editable = false
+
+[node name="BinValue" type="LineEdit" parent="RegisterShow/Registers/ContainerRegBotEyes"]
+layout_mode = 2
+text = "00000000"
+editable = false
+
+[node name="SpeedBox" type="SpinBox" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.13
+anchor_top = 0.02
+anchor_right = 0.24
+anchor_bottom = 0.08
+min_value = 0.1
+max_value = 6.0
+step = 0.1
+value = 1.0
+
+[node name="InfoButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.501
+anchor_top = 0.1
+anchor_right = 0.59
+anchor_bottom = 0.16
+text = "Help"
+
+[node name="OptionButton" type="OptionButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.02
+anchor_right = 0.59
+anchor_bottom = 0.08
+item_count = 4
+selected = 0
+popup/item_0/text = "Fixed View"
+popup/item_0/id = 0
+popup/item_1/text = "Top Down"
+popup/item_1/id = 1
+popup/item_2/text = "First Person"
+popup/item_2/id = 2
+popup/item_3/text = "Third Person"
+popup/item_3/id = 3
+
+[node name="RegisterMenu" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.02
+anchor_right = 0.12
+anchor_bottom = 0.6
+
+[node name="Button" type="Button" parent="RegisterMenu"]
+layout_mode = 2
+toggle_mode = true
+text = "Reg Debug"
+
+[node name="OptionsScroll" type="ScrollContainer" parent="RegisterMenu"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_sljjk")
+
+[node name="VBox" type="VBoxContainer" parent="RegisterMenu/OptionsScroll"]
+layout_mode = 2
+
+[node name="RegA" type="CheckBox" parent="RegisterMenu/OptionsScroll/VBox"]
+layout_mode = 2
+text = "AX"
+flat = true
+
+[node name="RegB" type="CheckBox" parent="RegisterMenu/OptionsScroll/VBox"]
+layout_mode = 2
+text = "BX"
+flat = true
+
+[node name="RegC" type="CheckBox" parent="RegisterMenu/OptionsScroll/VBox"]
+layout_mode = 2
+text = "CX"
+flat = true
+
+[node name="RegD" type="CheckBox" parent="RegisterMenu/OptionsScroll/VBox"]
+layout_mode = 2
+text = "DX"
+flat = true
+
+[node name="RegSI" type="CheckBox" parent="RegisterMenu/OptionsScroll/VBox"]
+layout_mode = 2
+text = "SI"
+flat = true
+
+[node name="RegDI" type="CheckBox" parent="RegisterMenu/OptionsScroll/VBox"]
+layout_mode = 2
+text = "DI"
+flat = true
+
+[node name="RegBP" type="CheckBox" parent="RegisterMenu/OptionsScroll/VBox"]
+layout_mode = 2
+text = "BP"
+flat = true
+
+[node name="RegSP" type="CheckBox" parent="RegisterMenu/OptionsScroll/VBox"]
+layout_mode = 2
+text = "SP"
+flat = true
+
+[node name="Reg8" type="CheckBox" parent="RegisterMenu/OptionsScroll/VBox"]
+layout_mode = 2
+text = "R8"
+flat = true
+
+[node name="Reg9" type="CheckBox" parent="RegisterMenu/OptionsScroll/VBox"]
+layout_mode = 2
+text = "R9"
+flat = true
+
+[node name="Reg10" type="CheckBox" parent="RegisterMenu/OptionsScroll/VBox"]
+layout_mode = 2
+text = "R10"
+flat = true
+
+[node name="Reg11" type="CheckBox" parent="RegisterMenu/OptionsScroll/VBox"]
+layout_mode = 2
+text = "R11"
+flat = true
+
+[node name="Reg12" type="CheckBox" parent="RegisterMenu/OptionsScroll/VBox"]
+layout_mode = 2
+text = "R12"
+flat = true
+
+[node name="Reg13" type="CheckBox" parent="RegisterMenu/OptionsScroll/VBox"]
+layout_mode = 2
+text = "R13"
+flat = true
+
+[node name="Reg14" type="CheckBox" parent="RegisterMenu/OptionsScroll/VBox"]
+layout_mode = 2
+text = "R14"
+flat = true
+
+[node name="Reg15" type="CheckBox" parent="RegisterMenu/OptionsScroll/VBox"]
+layout_mode = 2
+text = "R15"
+flat = true
+
+[node name="RegFL" type="CheckBox" parent="RegisterMenu/OptionsScroll/VBox"]
+layout_mode = 2
+text = "FLAGS"
+flat = true
+
+[node name="RegIP" type="CheckBox" parent="RegisterMenu/OptionsScroll/VBox"]
+layout_mode = 2
+text = "IP"
+flat = true
+
+[node name="ErrorContainer" type="VBoxContainer" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.13
+anchor_top = 0.09
+anchor_right = 0.59
+anchor_bottom = 0.98
+grow_vertical = 0
+theme_override_constants/separation = 4
+alignment = 2
+
+[node name="Timer" type="Timer" parent="ErrorContainer"]
+wait_time = 0.1
+
+[node name="InfoTabs" type="TabContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.12
+anchor_top = 0.1
+anchor_right = 0.59
+anchor_bottom = 0.9
+
+[node name="Instructions" type="RichTextLabel" parent="InfoTabs"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "[color=lime]Note: instructions are case insensitive[/color]
+
+    [color=hotpink]mov[/color] [color=skyblue]from:int/reg[/color] [color=goldenrod]to:reg[/color]
+[color=khaki]copies[/color] the [color=skyblue]from[/color] number, or the number in the [color=skyblue]from[/color] register onto the [color=goldenrod]to[/color] register
+
+
+    [color=hotpink]jmp[/color] [color=lightgreen]destination:int/reg[/color]
+inconditional jump, sends execution to the line in the [color=lightgreen]destination[/color]
+
+    [color=hotpink]jez[/color] [color=skyblue]condition:int/reg[/color] [color=lightgreen]destination:int/reg[/color]
+sends execution to the [color=lightgreen]destination[/color] if the [color=skyblue]condition[/color] number is zero
+
+    [color=hotpink]jnz[/color] [color=skyblue]condition:int/reg[/color] [color=lightgreen]destination:int/reg[/color]
+sends execution to the [color=lightgreen]destination[/color] if the [color=skyblue]condition[/color] number is [color=indianred]NOT[/color] zero
+
+    [color=hotpink]jeq[/color] [color=skyblue]conditionA:int/reg[/color] [color=powderblue]conditionB:int/reg[/color] [color=lightgreen]destination:int/reg[/color]
+sends execution to the [color=lightgreen]destination[/color] if [color=skyblue]both[/color] [color=powderblue]condition[/color] numbers [color=khaki]are equal[/color]
+
+    [color=hotpink]jne[/color] [color=skyblue]conditionA:int/reg[/color] [color=powderblue]conditionB:int/reg[/color] [color=lightgreen]destination:int/reg[/color]
+sends execution to the [color=lightgreen]destination[/color] if [color=skyblue]both[/color] [color=powderblue]condition[/color] numbers [color=khaki]are different[/color]
+
+    [color=hotpink]jgt[/color] [color=skyblue]conditionA:int/reg[/color] [color=powderblue]conditionB:int/reg[/color] [color=lightgreen]destination:int/reg[/color]
+sends execution to the [color=lightgreen]destination[/color] if the [color=skyblue]first[/color] condition number [color=khaki]is greater than[/color] the [color=powderblue]second[/color]
+
+    [color=hotpink]jlt[/color] [color=skyblue]conditionA:int/reg[/color] [color=powderblue]conditionB:int/reg[/color] [color=lightgreen]destination:int/reg[/color]
+sends execution to the [color=lightgreen]destination[/color] if the [color=skyblue]first[/color] condition number [color=khaki]is lesser than[/color] the [color=powderblue]second[/color]
+
+    [color=hotpink]jge[/color] [color=skyblue]conditionA:int/reg[/color] [color=powderblue]conditionB:int/reg[/color] [color=lightgreen]destination:int/reg[/color]
+sends execution to the [color=lightgreen]destination[/color] if the [color=skyblue]first[/color] condition number [color=khaki]is greater than or equal to[/color] the [color=powderblue]second[/color]
+
+    [color=hotpink]jle[/color] [color=skyblue]conditionA:int/reg[/color] [color=powderblue]conditionB:int/reg[/color] [color=lightgreen]destination:int/reg[/color]
+sends execution to the [color=lightgreen]destination[/color] if the [color=skyblue]first[/color] condition number [color=khaki]is lesser than or equal to[/color] the [color=powderblue]second[/color]
+
+
+    [color=hotpink]add[/color] [color=skyblue]numA:int/reg[/color] [color=powderblue]numB:int/reg[/color] [color=goldenrod]out:reg[/color]
+[color=khaki]adds[/color] together the numbers in [color=skyblue]the[/color] [color=powderblue]inputs[/color] and places the result in the [color=goldenrod]output[/color] register
+
+    [color=hotpink]sub[/color] [color=skyblue]numA:int/reg[/color] [color=powderblue]numB:int/reg[/color] [color=goldenrod]out:reg[/color]
+[color=khaki]substracts[/color] the [color=powderblue]second input[/color] from the [color=skyblue]first[/color] and places the result in the [color=goldenrod]output[/color] register
+
+    [color=hotpink]mul[/color] [color=skyblue]numA:int/reg[/color] [color=powderblue]numB:int/reg[/color] [color=goldenrod]out:reg[/color]
+[color=khaki]multiplies[/color] together the numbers in [color=skyblue]the[/color] [color=powderblue]inputs[/color] and places the result in the out register
+
+    [color=hotpink]div[/color] [color=skyblue]numA:int/reg[/color] [color=powderblue]numB:int/reg[/color] [color=goldenrod]out:reg[/color]
+[color=khaki]divides[/color] the [color=skyblue]first input[/color] by the [color=powderblue]second[/color] and places the result in the [color=goldenrod]output[/color] register result is rounded down
+
+    [color=hotpink]mod[/color] [color=skyblue]numA:int/reg[/color] [color=powderblue]numB:int/reg[/color] [color=goldenrod]out:reg[/color]
+places the [color=khaki]remainder[/color] of the division of the [color=skyblue]first[/color] number by the [color=powderblue]second[/color] number and places it in the [color=goldenrod]output[/color] register
+
+
+    [color=hotpink]shr[/color] [color=skyblue]in:int/reg[/color] [color=goldenrod]out:reg[/color]
+[color=khaki]shifts the bits[/color] of the number in the [color=skyblue]input[/color] [color=khaki]one position to the right[/color] and places that in the [color=goldenrod]output[/color] register
+
+    [color=hotpink]shl[/color] [color=skyblue]in:int/reg[/color] [color=goldenrod]out:reg[/color]
+[color=khaki]shifts the bits[/color] of the number in the [color=skyblue]input[/color] [color=khaki]one position to the left[/color] and places the result in the [color=goldenrod]output[/color] register
+
+    [color=hotpink]and[/color] [color=skyblue]inA:int/reg[/color] [color=powderblue]inB:int/reg[/color] [color=goldenrod]out:reg[/color]
+[color=khaki]ands the bits[/color] of the [color=skyblue]two[/color] [color=powderblue]inputs[/color] together and places the result in the [color=goldenrod]output[/color] register
+
+    [color=hotpink]or[/color]  [color=skyblue]inA:int/reg[/color] [color=powderblue]inB:int/reg[/color] [color=goldenrod]out:reg[/color]
+[color=khaki]ors the bits[/color] of the [color=skyblue]two[/color] [color=powderblue]inputs[/color] together and places the result in the [color=goldenrod]output[/color] register
+
+    [color=hotpink]xor[/color] [color=skyblue]inA:int/reg[/color] [color=powderblue]inB:int/reg[/color] [color=goldenrod]out:reg[/color]
+[color=khaki]xors the bits[/color] of the [color=skyblue]two[/color] [color=powderblue]inputs[/color] together and places the result in the [color=goldenrod]output[/color] register
+
+    [color=hotpink]not[/color] [color=skyblue]in:int/reg[/color] [color=goldenrod]out:reg[/color]
+[color=khaki]filps all the bits[/color] in the [color=skyblue]input[/color] register and places that number in the [color=goldenrod]output[/color] register"
+autowrap_mode = 2
+
+[node name="Registers" type="RichTextLabel" parent="InfoTabs"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+bbcode_enabled = true
+text = "[color=lime]Note: register names are case insensitive[/color]
+
+[color=lightgreen]Registers[/color] are places to store data, the robot has 8 registers, 6 general purpose ([color=lightgreen]reg0[/color]-[color=lightgreen]reg5[/color]) and two functional ([color=lightgreen]rob[/color], [color=lightgreen]eye[/color])
+
+[color=lightgreen]Registers[/color] can hold [color=khaki]8-bit unsigned integers[/color], and they will [color=salmon]wrap around accordingly[/color]
+    [color=gray](for example [/color][color=skyblue]255[/color][color=gray]+[/color][color=skyblue]1[/color][color=gray] will wrap around to [/color][color=skyblue]0[/color][color=gray], equally, [/color][color=skyblue]0[/color][color=gray]-[/color][color=skyblue]1[/color][color=gray] will be turned to [/color][color=skyblue]255[/color][color=gray])[/color]
+
+the rob register, when a value other than [color=skyblue]0[/color] is [color=lightgreen]written[/color] to it, will make the robot [color=khaki]execute the action assigned[/color]
+    [color=skyblue]0[/color] - Nothing
+    [color=skyblue]1[/color] - Step forward
+    [color=skyblue]2[/color] - Step back
+    [color=skyblue]3[/color] - Turn right
+    [color=skyblue]4[/color] - Turn left
+    [color=skyblue]5[/color] - Turn around
+    [color=skyblue]6[/color] - Wave hi
+[color=skyblue]all other values[/color] written to the [color=lightgreen]register[/color] [color=salmon]will be ignored[/color], the register is flushed with every robot action
+
+the [color=lightgreen]eye register[/color] will hold a value denoting what the robot has [color=khaki]immediately in front of it[/color]
+    [color=skyblue]0[/color] - Nothing
+    [color=skyblue]1[/color] - Wall
+values can be written to the register, but they will [color=salmon]do nothing[/color], the register is updated with every robot action"
+autowrap_mode = 2
+
+[node name="Close" type="Control" parent="InfoTabs"]
+visible = false
+layout_mode = 2
+
+[connection signal="pressed" from="Run" to="." method="_on_run_pressed"]
+[connection signal="pressed" from="Step" to="." method="_on_step_pressed"]
+[connection signal="pressed" from="Reset" to="." method="_on_reset_pressed"]
+[connection signal="lines_edited_from" from="Program" to="." method="_on_program_lines_edited_from"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="InfoButton" to="." method="_on_info_button_pressed"]
+[connection signal="toggled" from="RegisterMenu/Button" to="RegisterMenu/OptionsScroll" method="set_visible"]
+[connection signal="tab_clicked" from="InfoTabs" to="." method="_on_info_tabs_tab_clicked"]

@@ -5,9 +5,9 @@ const DEFAULT_TILE_TEXTURES:String = "res://game_map/tiles/basic/"
 var objects:Array[FunctionalObject] = []
 
 var tileSubs:Dictionary = {}
-
+ 
 # this function prepares the entire map
-func build_map(data:Dictionary):
+func build_map(data:Dictionary = {}):
 	# we update the tile substitutions dictionary
 	if data.has("tile_defs"):
 		tileSubs = data["tile_defs"]
@@ -63,7 +63,6 @@ func place_tile(pos:Vector3, tile):
 		var startIndices = mesh_library.get_meta("TextureStartIndices", [])
 		if len(startIndices) > type:
 			type = startIndices[type]+texture-1
-			print(type)
 	self.set_cell_item(
 		pos, type,  # why godot 4, why
 		get_orthogonal_index_from_basis(Basis.from_euler(Vector3(0,rot*PI/2,0)))

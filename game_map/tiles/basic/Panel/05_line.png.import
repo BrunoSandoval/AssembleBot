@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dhnr3a4n8asy5"
 path.s3tc="res://.godot/imported/05_line.png-cb602305c5804c29729994a7a153afb6.s3tc.ctex"
+path.etc2="res://.godot/imported/05_line.png-cb602305c5804c29729994a7a153afb6.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://game_map/tiles/basic/Panel/05_line.png"
-dest_files=["res://.godot/imported/05_line.png-cb602305c5804c29729994a7a153afb6.s3tc.ctex"]
+dest_files=["res://.godot/imported/05_line.png-cb602305c5804c29729994a7a153afb6.s3tc.ctex", "res://.godot/imported/05_line.png-cb602305c5804c29729994a7a153afb6.etc2.ctex"]
 
 [params]
 

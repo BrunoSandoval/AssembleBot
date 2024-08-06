@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ccojqa645pm22"
 path.s3tc="res://.godot/imported/ExitBlock.png-40179efc1c3e51e1feb1933f0c7bb485.s3tc.ctex"
+path.etc2="res://.godot/imported/ExitBlock.png-40179efc1c3e51e1feb1933f0c7bb485.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://main_menu/ExitBlock.png"
-dest_files=["res://.godot/imported/ExitBlock.png-40179efc1c3e51e1feb1933f0c7bb485.s3tc.ctex"]
+dest_files=["res://.godot/imported/ExitBlock.png-40179efc1c3e51e1feb1933f0c7bb485.s3tc.ctex", "res://.godot/imported/ExitBlock.png-40179efc1c3e51e1feb1933f0c7bb485.etc2.ctex"]
 
 [params]
 

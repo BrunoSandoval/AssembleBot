@@ -1,16 +1,16 @@
 [gd_scene load_steps=37 format=3 uid="uid://b7f3nskil4824"]
 
 [ext_resource type="Script" path="res://main_menu/main_menu.gd" id="1_w3ns7"]
-[ext_resource type="PackedScene" uid="uid://dpa4t0rj1qhrx" path="res://robot/RobotModel.blend" id="1_x67i2"]
-[ext_resource type="MeshLibrary" uid="uid://b0a2ywkevbv3u" path="res://game_map/tiles/basic/basic_tilles.meshlib" id="3_vsay1"]
+[ext_resource type="MeshLibrary" uid="uid://b0a2ywkevbv3u" path="res://game_map/tiles/basic/basic_tilles.meshlib" id="2_ndtpu"]
 [ext_resource type="Texture2D" uid="uid://ccojqa645pm22" path="res://main_menu/ExitBlock.png" id="3_xyqmc"]
 [ext_resource type="Texture2D" uid="uid://og6tb1kaq83p" path="res://main_menu/SelectMapBlock.png" id="4_cuksd"]
 [ext_resource type="Texture2D" uid="uid://hdaxgqb7e0nv" path="res://main_menu/ExitBlockEmissive.png" id="5_c1la5"]
-[ext_resource type="Texture2D" uid="uid://c5ader816bv2a" path="res://main_menu/PlayBlock.png" id="5_sutp7"]
+[ext_resource type="Texture2D" uid="uid://dpikp008mqx6p" path="res://main_menu/PlayBlock.png" id="5_sutp7"]
 [ext_resource type="Texture2D" uid="uid://dow3s5jxxdq5d" path="res://main_menu/SelectMapBlockEmissive.png" id="7_pilso"]
 [ext_resource type="Texture2D" uid="uid://cjmqu0vx4qmv7" path="res://main_menu/PlayBlockEmissive.png" id="9_5yy8c"]
-[ext_resource type="AudioStream" uid="uid://c416b01cf5tr4" path="res://main_menu/sineD#.wav" id="10_q8shr"]
+[ext_resource type="AudioStream" uid="uid://cc74mbmu4wm2u" path="res://main_menu/sineD#.wav" id="10_q8shr"]
 [ext_resource type="PackedScene" uid="uid://1d45wccrvb8f" path="res://main_menu/pick_map_screen.tscn" id="11_0ajeg"]
+[ext_resource type="PackedScene" uid="uid://c081p7wp0ufyi" path="res://robots/regbot/RobotModel.glb" id="11_00wo1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0fgui"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -130,12 +130,10 @@ environment = SubResource("Environment_88bkb")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-4.35451e-08, -0.0871558, 0.996195, -3.8097e-09, 0.996195, 0.0871558, -1, 1.77636e-15, -4.37114e-08, 3, 0.6, 0)
-
-[node name="RobotModel" parent="." instance=ExtResource("1_x67i2")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 1.9, 0, -0.8)
+current = true
 
 [node name="GridMap" type="GridMap" parent="."]
-mesh_library = ExtResource("3_vsay1")
+mesh_library = ExtResource("2_ndtpu")
 physics_material = SubResource("PhysicsMaterial_pg18g")
 cell_size = Vector3(1, 1, 1)
 cell_center_x = false
@@ -207,15 +205,18 @@ dialog_close_on_escape = false
 transform = Transform3D(-0.17101, 0.173648, 0.969846, 0.0301537, 0.984808, -0.17101, -0.984808, 1.83435e-09, -0.173648, 2, 1, 0.2)
 mesh = SubResource("TextMesh_j1mmv")
 
+[node name="RobotModel" parent="." instance=ExtResource("11_00wo1")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 1.9, 0, -0.8)
+
 [connection signal="input_event" from="ExitBlock" to="." method="_on_exit_block_input_event"]
-[connection signal="mouse_entered" from="ExitBlock" to="." method="_on_block_mouse_entered" binds= ["ExitBlock/HighlightBlock"]]
-[connection signal="mouse_exited" from="ExitBlock" to="." method="_on_block_mouse_exited" binds= ["ExitBlock/HighlightBlock"]]
+[connection signal="mouse_entered" from="ExitBlock" to="." method="_on_block_mouse_entered" binds= ["ExitBlock", false]]
+[connection signal="mouse_exited" from="ExitBlock" to="." method="_on_block_mouse_exited" binds= ["ExitBlock"]]
 [connection signal="input_event" from="SelectMapBlock" to="." method="_on_select_map_block_input_event"]
-[connection signal="mouse_entered" from="SelectMapBlock" to="." method="_on_block_mouse_entered" binds= ["SelectMapBlock/HighlightBlock"]]
-[connection signal="mouse_exited" from="SelectMapBlock" to="." method="_on_block_mouse_exited" binds= ["SelectMapBlock/HighlightBlock"]]
+[connection signal="mouse_entered" from="SelectMapBlock" to="." method="_on_block_mouse_entered" binds= ["SelectMapBlock", false]]
+[connection signal="mouse_exited" from="SelectMapBlock" to="." method="_on_block_mouse_exited" binds= ["SelectMapBlock"]]
 [connection signal="input_event" from="StartBlock" to="." method="_on_start_block_input_event"]
-[connection signal="mouse_entered" from="StartBlock" to="." method="_on_block_mouse_entered" binds= ["StartBlock/HighlightBlock", true]]
-[connection signal="mouse_exited" from="StartBlock" to="." method="_on_block_mouse_exited" binds= ["StartBlock/HighlightBlock"]]
+[connection signal="mouse_entered" from="StartBlock" to="." method="_on_block_mouse_entered" binds= ["StartBlock", true]]
+[connection signal="mouse_exited" from="StartBlock" to="." method="_on_block_mouse_exited" binds= ["StartBlock"]]
 [connection signal="RequestError" from="PickMapScreen" to="." method="_on_pick_map_screen_request_error"]
 [connection signal="closed" from="PickMapScreen" to="." method="_on_pick_map_screen_closed"]
 [connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]

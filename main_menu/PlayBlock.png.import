@@ -2,17 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5ader816bv2a"
+uid="uid://dpikp008mqx6p"
 path.s3tc="res://.godot/imported/PlayBlock.png-5ffc370642c1cf9fbbd69ebc1473e6cf.s3tc.ctex"
+path.etc2="res://.godot/imported/PlayBlock.png-5ffc370642c1cf9fbbd69ebc1473e6cf.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://main_menu/PlayBlock.png"
-dest_files=["res://.godot/imported/PlayBlock.png-5ffc370642c1cf9fbbd69ebc1473e6cf.s3tc.ctex"]
+dest_files=["res://.godot/imported/PlayBlock.png-5ffc370642c1cf9fbbd69ebc1473e6cf.s3tc.ctex", "res://.godot/imported/PlayBlock.png-5ffc370642c1cf9fbbd69ebc1473e6cf.etc2.ctex"]
 
 [params]
 

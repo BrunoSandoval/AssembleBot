@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dow3s5jxxdq5d"
 path.s3tc="res://.godot/imported/SelectMapBlockEmissive.png-02916893bc4149ac85b94efd0903d646.s3tc.ctex"
+path.etc2="res://.godot/imported/SelectMapBlockEmissive.png-02916893bc4149ac85b94efd0903d646.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://main_menu/SelectMapBlockEmissive.png"
-dest_files=["res://.godot/imported/SelectMapBlockEmissive.png-02916893bc4149ac85b94efd0903d646.s3tc.ctex"]
+dest_files=["res://.godot/imported/SelectMapBlockEmissive.png-02916893bc4149ac85b94efd0903d646.s3tc.ctex", "res://.godot/imported/SelectMapBlockEmissive.png-02916893bc4149ac85b94efd0903d646.etc2.ctex"]
 
 [params]
 

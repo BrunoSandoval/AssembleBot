@@ -1,0 +1,306 @@
+{
+	"ADC":[ArgT.regmem|8|16|32|64, ArgT.anydat|8|16|32|64],# dest, src
+	# adds the carry flag and the operands and puts the result in dest
+	# modifies OF, SF, ZF, AF, PF, CF
+	"ADCX":[ArgT.reg|32|64, ArgT.regmem|32|64],# dest, src
+	# same as ADC
+	# modifies only CF
+	"ADD":[ArgT.regmem|8|16|32|64, ArgT.anydat|8|16|32|64],# dest, src
+	# adds the two operands, places result in dest
+	# sign-extends an immediate value
+	# SF indicates the sign of a result
+	# modifies OF, SF, ZF, AF, PF, CF
+	"ADOX":[ArgT.reg|32|64, ArgT.regmem|32|64],# dest, src
+	# similar to ADC, but adds OF instead of CF
+	# modifies OF
+	"AND":[ArgT.regmem|8|16|32|64, ArgT.anydat|8|16|32|64],# dest, src
+	# bitwise and of the operators
+	# zeroes CF, OF; modifies SF, ZF, PF
+	"ANDN":[ArgT.reg|32|64, ArgT.reg|32|64, Argtypes.regmem|32|64],# dest, src1, src2
+	# bitwise logical and of the src2 and one's complement (all bits flipped) of src1, stores the result in dest
+	# only 32 and 64 bits
+	# zeroes CF, OF; modifies SF, ZF
+	"BEXTR":[ArgT.reg|32|64, ArgT.regmem|32|64, ArgT.reg|32|64],# TODO figure out this thing
+	"BLCFILL":[ArgT.reg|32|64, ArgT.regmem|32|64],# TODO figure out this thing
+	"BLCL":[ArgT.reg|32|64, ArgT.regmem|32|64],# TODO figure out this thing
+	"BLCIC":[ArgT.reg|32|64, ArgT.regmem|32|64],# TODO figure out this thing
+	"BLCMSK":[ArgT.reg|32|64, ArgT.regmem|32|64],# TODO figure out this thing
+	"BLCS":[ArgT.reg|32|64, ArgT.regmem|32|64],# TODO figure out this thing
+	"BLSFILL":[ArgT.reg|32|64, ArgT.regmem|32|64],# TODO figure out this thing
+	"BLSI":[ArgT.reg|32|64, ArgT.regmem|32|64],# TODO figure out this thing
+	"BLSIC":[ArgT.reg|32|64, ArgT.regmem|32|64],# TODO figure out this thing
+	"BLSMSK":[ArgT.reg|32|64, ArgT.regmem|32|64],# TODO figure out this thing
+	"BLSR":[ArgT.reg|32|64, ArgT.regmem|32|64],# TODO figure out this thing
+	"BSF":[ArgT.reg|16|32|64, ArgT.regmem|16|32|64],# TODO figure out this thing
+	"BSR":[ArgT.reg|16|32|64, ArgT.regmem|16|32|64],# TODO figure out this thing
+	"BSWAP":[ArgT.reg|32|64],# TODO figure out this thing
+	"BT":[ArgT.regmem|16|32|64, ArgT.reg|16|32|64|ArgT.imm|8],# TODO figure out this thing
+	"BTC":[ArgT.regmem|16|32|64, ArgT.reg|16|32|64|ArgT.imm|8],# TODO figure out this thing
+	"BTR":[ArgT.regmem|16|32|64, ArgT.reg|16|32|64|ArgT.imm|8],# TODO figure out this thing
+	"BTS":[ArgT.regmem|16|32|64, ArgT.reg|16|32|64|ArgT.imm|8],# TODO figure out this thing
+	"BZHI":[ArgT.reg|32|64, ArgT.regmem|32|64, ArgT.reg|32|64],# TODO figure out this thing
+	"CALL":[ArgT.off|ArgT.regmem|16|32|64],# offset
+	# pushes the offset of the next instruction onto the stack and branches to the target adress
+	# the offset can be a register or label
+	"CBW":[],
+	# copies the sign bit in AL to AX
+	"CWDE":[],
+	# copies the sign bit in AX to EAX
+	"CDQE":[],
+	# copies the sign bit in EAX to RAX
+	"CWD":[],
+	# copies the sign bit in AX to all the bits of DX, extending AX into AX:DX
+	"CDQ":[],
+	# copies the sign bit in EAX to all the bits of EDX, extending EAX into EAX:EDX
+	"CQO":[],
+	# copies the sign bit in RAX to all the bits of RDX, extending RAX into RAX:RDX
+	"CLC":[],
+	# clears the carry flag
+	# zeroes CF
+	"CLD":[],
+	# clears the direction flag
+	# zeroes DF
+	"CMC":[],
+	# complements (toggles) the carry flag
+	# sets FC
+	"CMOVO":[ArgT.reg|16|32|64, ArgT.regmem|16|32|64],# dest, src
+	# Conditional moves from src to dest if oveflow
+	# if OF = 1
+	"CMOVNO":[ArgT.reg|16|32|64, ArgT.regmem|16|32|64],# dest, src
+	# Conditional moves from src to dest if not overflow
+	# if OF = 0
+	"CMOVB":[ArgT.reg|16|32|64, ArgT.regmem|16|32|64],# dest, src
+	# Conditional moves from src to dest if below
+	# if CF = 1
+	"CMOVC":[ArgT.reg|16|32|64, ArgT.regmem|16|32|64],# dest, src
+	# Conditional moves from src to dest if carry
+	# if CF = 1
+	"CMOVNAE":[ArgT.reg|16|32|64, ArgT.regmem|16|32|64],# dest, src
+	# Conditional moves from src to dest if not above or equal
+	# if CF = 1
+	"CMOVNB":[ArgT.reg|16|32|64, ArgT.regmem|16|32|64],# dest, src
+	# Conditional moves from src to dest if not below
+	# if CF = 0
+	"CMOVNC":[ArgT.reg|16|32|64, ArgT.regmem|16|32|64],# dest, src
+	# Conditional moves from src to dest if not carry
+	# if CF = 0
+	"CMOVAE":[ArgT.reg|16|32|64, ArgT.regmem|16|32|64],# dest, src
+	# Conditional moves from src to dest if above or equal
+	# if CF = 0
+	"CMOVZ":[ArgT.reg|16|32|64, ArgT.regmem|16|32|64],# dest, src
+	# Conditional moves from src to dest if zero
+	# if ZF = 1
+	"CMOVE":[ArgT.reg|16|32|64, ArgT.regmem|16|32|64],# dest, src
+	# Conditional moves from src to dest if equal
+	# if ZF = 1
+	"CMOVNZ":[ArgT.reg|16|32|64, ArgT.regmem|16|32|64],# dest, src
+	# Conditional moves from src to dest if not zero
+	# if ZF = 0
+	"CMOVNE":[ArgT.reg|16|32|64, ArgT.regmem|16|32|64],# dest, src
+	# Conditional moves from src to dest if not equal
+	# if ZF = 0
+	"CMOVBE":[ArgT.reg|16|32|64, ArgT.regmem|16|32|64],# dest, src
+	# Conditional moves from src to dest if below or equal
+	# if CF = 1 or ZF = 1
+	"CMOVNA":[ArgT.reg|16|32|64, ArgT.regmem|16|32|64],# dest, src
+	# Conditional moves from src to dest if not above
+	# if CF = 1 or ZF = 1
+	"CMOVNBE":[ArgT.reg|16|32|64, ArgT.regmem|16|32|64],# dest, src
+	# Conditional moves from src to dest if not below or equal
+	# if CF = 0 or ZF = 0
+	"CMOVA":[ArgT.reg|16|32|64, ArgT.regmem|16|32|64],# dest, src
+	# Conditional moves from src to dest if above
+	# if CF = 0 or ZF = 0
+	"CMOVS":[ArgT.reg|16|32|64, ArgT.regmem|16|32|64],# dest, src
+	# Conditional moves from src to dest if sign
+	# if SF = 1
+	"CMOVNS":[ArgT.reg|16|32|64, ArgT.regmem|16|32|64],# dest, src
+	# Conditional moves from src to dest if not sign
+	# if SF = 0
+	"CMOVP":[ArgT.reg|16|32|64, ArgT.regmem|16|32|64],# dest, src
+	# Conditional moves from src to dest if parity
+	# if PF = 1
+	"CMOVPE":[ArgT.reg|16|32|64, ArgT.regmem|16|32|64],# dest, src
+	# Conditional moves from src to dest if parity even
+	# if PF = 1
+	"CMOVNP":[ArgT.reg|16|32|64, ArgT.regmem|16|32|64],# dest, src
+	# Conditional moves from src to dest if not parity
+	# if PF = 0
+	"CMOVPO":[ArgT.reg|16|32|64, ArgT.regmem|16|32|64],# dest, src
+	# Conditional moves from src to dest if parity odd
+	# if PF = 0
+	"CMOVL":[ArgT.reg|16|32|64, ArgT.regmem|16|32|64],# dest, src
+	# Conditional moves from src to dest if less
+	# if SF != OF
+	"CMOVNGE":[ArgT.reg|16|32|64, ArgT.regmem|16|32|64],# dest, src
+	# Conditional moves from src to dest if not greater or equal
+	# if SF != OF
+	"CMOVNL":[ArgT.reg|16|32|64, ArgT.regmem|16|32|64],# dest, src
+	# Conditional moves from src to dest if not less
+	# if SF = OF
+	"CMOVGE":[ArgT.reg|16|32|64, ArgT.regmem|16|32|64],# dest, src
+	# Conditional moves from src to dest if greater or equal
+	# if SF = OF
+	"CMOVLE":[ArgT.reg|16|32|64, ArgT.regmem|16|32|64],# dest, src
+	# Conditional moves from src to dest if less or equal
+	# if ZF = 1 or SF != OF
+	"CMOVNG":[ArgT.reg|16|32|64, ArgT.regmem|16|32|64],# dest, src
+	# Conditional moves from src to dest if not greater
+	# if ZF = 1 or SF != OF
+	"CMOVNLE":[ArgT.reg|16|32|64, ArgT.regmem|16|32|64],# dest, src
+	# Conditional moves from src to dest if not less or equal
+	# if ZF = 0 and SF = OF
+	"CMOVG":[ArgT.reg|16|32|64, ArgT.regmem|16|32|64],# dest, src
+	# Conditional moves from src to dest if greater
+	# if ZF = 0 and SF = OF
+	"CMP":[SAME_SIZE|ArgT.regmem|8|16|32|64, SAME_SIZE|ArgT.anydat|8|16|32|64],# a1, a2
+	# compares the operands by substracting a2 from a1
+	#  CF is when interpreted as unsigned, OF is as signed
+	# | condition | ZF | CF | OF  |
+	# +-----------+----+----+-----+
+	# |  a1 > a2  | 0  | 0  | SF  |
+	# |  a1 = a2  | 1  | 0  | 0   |
+	# |  a1 < a2  | 0  | 1  | !SF |
+	# modifies OF, SF, ZF, AF, PF, CF
+	"CMPS":[SAME_SIZE|ArgT.mem|8|16|32|64, SAME_SIZE|ArgT.mem|8|16|32|64],
+	"CMPSB":[],
+	"CMPSW":[],
+	"CMPSD":[],
+	"CMPSQ":[],
+	# compares the values pointed to by RSI and RDI similarly to CMP
+	# increments the pointers if DF is zero, otherwise it decrements them
+	# modifies OF, SF, ZF, AF, PF, CF
+	"CMPXCHG":[SAME_SIZE|ArgT.regmem|8|16|32|64, SAME_SIZE|ArgT.reg|8|16|32|64],
+	
+	"CPUID":[],
+	# provides information about the robot's processor capabilities
+	# the exact values left in the registers EAX-EDX are to be determined TODO
+	"DAA", #TODO research BCDs
+	"DAS", #TODO research BCDs
+	"DEC",# arg
+	# decrements 1 from the arg without updating CF
+	# modifies OF, SF, ZF, AF, PF
+	"DIV",# arg
+	# unsigned divides A/A:D by the value in arg
+	# 8bit: o->AX      q->AL  r->AH
+	#16bit: o->DX:AX   q->AX  r->DX
+	#32bit: o->EDX:EAX q->EAX r->EDX
+	#64bit: o->RDX:RAX q->RAX r->RDX
+	"IDIV",# arg
+	# signed divides A/A:D by the value in arg
+	# 8bit: o->AX      q->AL  r->AH
+	#16bit: o->DX:AX   q->AX  r->DX
+	#32bit: o->EDX:EAX q->EAX r->EDX
+	#64bit: o->RDX:RAX q->RAX r->RDX
+	"IMUL",# arg / dest, src / dest, src, imm
+	# signed multiplies A by the value in arg
+	# signed multiples dest by src and puts the value in dest (16b+)
+	# signed multiples src by imm and puts the value in dest (src,dest 16b+; imm 32b-)
+	# 8bit: o->AX      i->AL
+	#16bit: o->DX:AX   i->AX
+	#32bit: o->EDX:EAX i->EAX
+	#64bit: o->RDX:RAX i->RAX
+	"IN",# A, imm8 / A, D
+	# input info from the port numbered by imm8 or d into the A register
+	# TODO exact behavior to be determined
+	"INC",# arg
+	# adds 1, doesn't update flags
+	"INT",# arg
+	# calls the interrupt routine specified by arg
+	# TODO exact behavior to be determined
+	"JC",# offset
+	# jumps execution if carry
+	# if CF = 1
+	"JNAE",# offset
+	# jumps execution if not above or equal
+	# if CF = 1
+	"JNB",# offset
+	# jumps execution if not below
+	# if CF = 0
+	"JNC",# offset
+	# jumps execution if not carry
+	# if CF = 0
+	"JAE",# offset
+	# jumps execution if above or equal
+	# if CF = 0
+	"JZ",# offset
+	# jumps execution if zero
+	# if ZF = 1
+	"JE",# offset
+	# jumps execution if equal
+	# if ZF = 1
+	"JNZ",# offset
+	# jumps execution if not zero
+	# if ZF = 0
+	"JNE",# offset
+	# jumps execution if not equal
+	# if ZF = 0
+	"JBE",# offset
+	# jumps execution if below or equal
+	# if CF = 1 or ZF = 1
+	"JNA",# offset
+	# jumps execution if not above
+	# if CF = 1 or ZF = 1
+	"JNBE",# offset
+	# jumps execution if not below or equal
+	# if CF = 0 and ZF = 0
+	"JA",# offset
+	# jumps execution if above
+	# if CF = 0 and ZF = 0
+	"JS",# offset
+	# jumps execution if sign
+	# if SF = 1
+	"JNS",# offset
+	# jumps execution if not sign
+	# if SF = 0
+	"JP",# offset
+	# jumps execution if parity
+	# if PF = 1
+	"JPE",# offset
+	# jumps execution if parity even
+	# if PF = 1
+	"JNP",# offset
+	# jumps execution if not parity
+	# if PF = 0
+	"JPO",# offset
+	# jumps execution if parity odd
+	# if PF = 0
+	"JL",# offset
+	# jumps execution if less
+	# if SF != OF
+	"JNGE",# offset
+	# jumps execution if not greater or equal
+	# if SF != OF
+	"JNL",# offset
+	# jumps execution if not less
+	# if SF = OF
+	"JGE",# offset
+	# jumps execution if greater or equal
+	# if SF = OF
+	"JLE",# offset
+	# jumps execution if less or equal
+	# if ZF = 1 or SF != OF
+	"JNG",# offset
+	# jumps execution if not greater
+	# if ZF = 1 or SF != OF
+	"JNLE",# offset
+	# jumps execution if not less or equal
+	# if ZF = 0 and SF = OF
+	"JG",# offset
+	# jumps execution if greater
+	# if ZF = 0 and SF = OF
+	"JCXZ",# offset
+	# jumps execution if CX is zero
+	"JECXZ",# offset
+	# jumps execution if ECX is zero
+	"JRCXZ",# offset
+	# jumps execution if RCX is zero
+	"JMP",# offset
+	# jumps execution unconditionally
+	"LAHF",
+	# loads the lowest 8 bits of rFLAGS into AH
+	# this includes SF, ZF, AF, PF and CF
+	"LEA", # dest, adress
+	# computes the adress and copies the data in the adress to dest
+	"LODS", #
+}

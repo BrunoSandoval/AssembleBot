@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://35tdghkbln81"]
+
+[ext_resource type="StyleBox" uid="uid://bmm2xhb0tmeeh" path="res://gameplay/gui/Style/error_display_style.tres" id="1_hvp7r"]
+[ext_resource type="Script" path="res://gameplay/gui/ErrorDisplay.gd" id="1_jbs3k"]
+
+[node name="ErrorDisplay" type="PanelContainer"]
+anchors_preset = -1
+anchor_left = 0.13
+anchor_top = 0.09
+anchor_right = 0.59
+anchor_bottom = 0.14
+theme_override_styles/panel = ExtResource("1_hvp7r")
+script = ExtResource("1_jbs3k")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Oopsie poopsie, something bad has happened"

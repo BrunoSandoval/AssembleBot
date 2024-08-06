@@ -2,17 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://box6y5i4doaj"
+uid="uid://8bcm111mgqx8"
 path.s3tc="res://.godot/imported/12_halfjuncalt.png-e72338e46ff9afa09a8e7b28431aea8e.s3tc.ctex"
+path.etc2="res://.godot/imported/12_halfjuncalt.png-e72338e46ff9afa09a8e7b28431aea8e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://game_map/tiles/basic/Panel/12_halfjuncalt.png"
-dest_files=["res://.godot/imported/12_halfjuncalt.png-e72338e46ff9afa09a8e7b28431aea8e.s3tc.ctex"]
+dest_files=["res://.godot/imported/12_halfjuncalt.png-e72338e46ff9afa09a8e7b28431aea8e.s3tc.ctex", "res://.godot/imported/12_halfjuncalt.png-e72338e46ff9afa09a8e7b28431aea8e.etc2.ctex"]
 
 [params]
 

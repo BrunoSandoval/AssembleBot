@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b16kvrul33cr3"
 path.s3tc="res://.godot/imported/10_4vertices.png-ea8cc0c41d198a22ce8dd51e3a6404ca.s3tc.ctex"
+path.etc2="res://.godot/imported/10_4vertices.png-ea8cc0c41d198a22ce8dd51e3a6404ca.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://game_map/tiles/basic/Cube/10_4vertices.png"
-dest_files=["res://.godot/imported/10_4vertices.png-ea8cc0c41d198a22ce8dd51e3a6404ca.s3tc.ctex"]
+dest_files=["res://.godot/imported/10_4vertices.png-ea8cc0c41d198a22ce8dd51e3a6404ca.s3tc.ctex", "res://.godot/imported/10_4vertices.png-ea8cc0c41d198a22ce8dd51e3a6404ca.etc2.ctex"]
 
 [params]
 
